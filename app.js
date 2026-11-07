@@ -19,7 +19,8 @@ const state = {
   favoritesOnly: false,
   favorites: new Set(JSON.parse(localStorage.getItem("mobi-favorites") || "[]")),
   cart: JSON.parse(localStorage.getItem("mobi-cart") || "[]"),
-  coupon: ""
+  coupon: "",
+  user: null
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -37,6 +38,125 @@ function showToast(message) {
   toast.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+async function authRequest(action, payload) {
+  if (location.protocol === "file:") throw new Error("Website chưa cấu hình API tài khoản.");
+  const options = { method: payload ? "POST" : "GET", credentials: "include", headers: { "Content-Type": "application/json" } };
+  if (payload) options.body = JSON.stringify(payload);
+  let response;
+  try {
+    response = await fetch(`/api/auth/${action}`, options);
+  } catch {
+    throw new Error("Dịch vụ tài khoản chưa được kết nối. Vui lòng triển khai backend đăng nhập trước.");
+  }
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    if (response.status === 0 || response.status === 404) throw new Error("Website chưa cấu hình API tài khoản.");
+    throw new Error(result.message || "Không thể xử lý yêu cầu. Vui lòng thử lại.");
+  }
+  return result;
+}
+
+function renderAccount() {
+  const label = $("#accountButtonLabel");
+  const name = state.user?.name || "Đăng nhập";
+  label.textContent = state.user ? name.split(" ")[0] : "Đăng nhập";
+  $("#accountButton").classList.toggle("is-authenticated", Boolean(state.user));
+  $("#accountButton").setAttribute("aria-label", state.user ? `Tài khoản của ${name}` : "Đăng nhập tài khoản");
+  $("#accountPanelName").textContent = name;
+  $("#accountPanelEmail").textContent = state.user?.email || "";
+  $("#accountAvatar").textContent = name.trim().charAt(0).toLocaleUpperCase("vi") || "M";
+}
+
+function setAuthStatus(message = "", kind = "error") {
+  const status = $("#authStatus");
+  status.textContent = message;
+  status.classList.toggle("success", kind === "success");
+  status.classList.toggle("error", kind === "error");
+}
+
+function setAuthView(view) {
+  const views = {
+    login: ["Đăng nhập", "Đăng nhập để theo dõi đơn hàng và nhận ưu đãi riêng."],
+    register: ["Tạo tài khoản", "Tham gia Mobi House để trải nghiệm mua sắm thuận tiện hơn."],
+    forgot: ["Đặt lại mật khẩu", "Nhập email, chúng tôi sẽ gửi hướng dẫn nếu tài khoản tồn tại."],
+    account: ["Tài khoản của bạn", "Thông tin tài khoản đang đăng nhập."]
+  };
+  $("#authTitle").textContent = views[view][0];
+  $("#authDescription").textContent = views[view][1];
+  $("#authTabs").hidden = view === "forgot" || view === "account";
+  $("[data-auth-panel='login']").hidden = view !== "login";
+  $("[data-auth-panel='register']").hidden = view !== "register";
+  $("[data-auth-panel='forgot']").hidden = view !== "forgot";
+  $("[data-auth-panel='account']").hidden = view !== "account";
+  document.querySelectorAll(".auth-password input").forEach((input) => {
+    input.value = "";
+    input.type = "password";
+  });
+  document.querySelectorAll(".password-toggle").forEach((toggle) => {
+    toggle.setAttribute("aria-label", "Hiện mật khẩu");
+    toggle.title = "Hiện mật khẩu";
+    toggle.innerHTML = '<i data-lucide="eye" aria-hidden="true"></i>';
+  });
+  document.querySelectorAll("[data-auth-tab]").forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.authTab === view)));
+  setAuthStatus();
+  renderIcons();
+}
+
+function openAuthDialog() {
+  setAuthView(state.user ? "account" : "login");
+  $("#authDialog").showModal();
+  $(state.user ? "#logoutButton" : "#authLoginForm input").focus();
+}
+
+async function restoreAuthSession() {
+  try {
+    const result = await authRequest("me");
+    state.user = result.user || null;
+    renderAccount();
+  } catch {
+    state.user = null;
+  }
+}
+
+async function submitAuthForm(form) {
+  const formData = new FormData(form);
+  const submitButton = form.querySelector("button[type='submit']");
+  submitButton.disabled = true;
+  setAuthStatus("Đang xử lý...");
+  try {
+    if (form.id === "authLoginForm") {
+      const email = formData.get("email").trim();
+      const result = await authRequest("login", { email, password: formData.get("password"), remember: formData.has("remember") });
+      state.user = result.user || { name: email.split("@")[0], email };
+      renderAccount();
+      setAuthView("account");
+    } else if (form.id === "authRegisterForm") {
+      const result = await authRequest("register", { name: formData.get("name").trim(), email: formData.get("email").trim(), password: formData.get("password"), terms: formData.has("terms") });
+      state.user = result.user || { name: formData.get("name").trim(), email: formData.get("email").trim() };
+      renderAccount();
+      setAuthView("account");
+    } else {
+      await authRequest("forgot-password", { email: formData.get("email").trim() });
+      setAuthStatus("Nếu email có tài khoản, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư.", "success");
+    }
+  } catch (error) {
+    setAuthStatus(error.message);
+  } finally {
+    submitButton.disabled = false;
+  }
+}
+
+async function signOut() {
+  try {
+    await authRequest("logout", {});
+    state.user = null;
+    renderAccount();
+    setAuthView("login");
+  } catch (error) {
+    setAuthStatus(error.message);
+  }
 }
 
 function saveState() {
@@ -196,6 +316,19 @@ document.addEventListener("click", (event) => {
     renderCart();
   } else if (target.id === "openCart") setCartOpen(true);
   else if (target.id === "closeCart" || target.id === "continueShopping") setCartOpen(false);
+  else if (target.id === "accountButton") openAuthDialog();
+  else if (target.id === "closeAuth") $("#authDialog").close();
+  else if (target.dataset.authTab) setAuthView(target.dataset.authTab);
+  else if (target.dataset.authView) setAuthView(target.dataset.authView);
+  else if (target.dataset.passwordToggle) {
+    const input = $(`#${target.dataset.passwordToggle}`);
+    input.type = input.type === "password" ? "text" : "password";
+    const visible = input.type === "text";
+    target.setAttribute("aria-label", visible ? "Ẩn mật khẩu" : "Hiện mật khẩu");
+    target.title = visible ? "Ẩn mật khẩu" : "Hiện mật khẩu";
+    target.innerHTML = `<i data-lucide="${visible ? "eye-off" : "eye"}" aria-hidden="true"></i>`;
+    renderIcons();
+  } else if (target.id === "logoutButton") signOut();
   else if (target.id === "checkoutButton") openCheckout();
   else if (target.id === "closeProduct") $("#productDialog").close();
   else if (target.id === "closeCheckout") $("#checkoutDialog").close();
@@ -228,6 +361,11 @@ document.addEventListener("keydown", (event) => {
 });
 
 $("#searchInput").addEventListener("input", (event) => { state.query = event.target.value.trim(); renderProducts(); });
+$("#authContent").addEventListener("submit", (event) => {
+  if (!["authLoginForm", "authRegisterForm", "authForgotForm"].includes(event.target.id)) return;
+  event.preventDefault();
+  submitAuthForm(event.target);
+});
 $("#sortSelect").addEventListener("change", (event) => { state.sort = event.target.value; renderProducts(); });
 $("#brandOptions").addEventListener("change", (event) => {
   if (event.target.matches("input")) {
@@ -286,4 +424,6 @@ $("#productGrid").addEventListener("error", (event) => {
 renderCategories();
 renderProducts();
 renderCart();
+renderAccount();
 renderIcons();
+if (location.protocol !== "file:") restoreAuthSession();

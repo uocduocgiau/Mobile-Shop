@@ -36,6 +36,10 @@
         <input id="searchInput" type="search" placeholder="Tìm điện thoại..." aria-label="Tìm điện thoại">
         <kbd>/</kbd>
       </label>
+      <button class="icon-button account-shortcut" id="accountButton" type="button" aria-label="Đăng nhập tài khoản" title="Tài khoản">
+        <i data-lucide="user-round" aria-hidden="true"></i>
+        <span class="header-label" id="accountButtonLabel">Đăng nhập</span>
+      </button>
       <button class="icon-button favorite-shortcut" id="favoritesShortcut" type="button" aria-label="Xem sản phẩm yêu thích" title="Sản phẩm yêu thích">
         <i data-lucide="heart" aria-hidden="true"></i>
         <span class="header-label">Yêu thích</span>
@@ -145,6 +149,52 @@
 
   <dialog class="product-dialog" id="productDialog" aria-label="Chi tiết sản phẩm"><button class="close-button dialog-close" id="closeProduct" type="button" aria-label="Đóng chi tiết"><i data-lucide="x" aria-hidden="true"></i></button><div id="productDetail"></div></dialog>
   <dialog class="checkout-dialog" id="checkoutDialog" aria-labelledby="checkoutTitle"><button class="close-button dialog-close" id="closeCheckout" type="button" aria-label="Đóng đặt hàng"><i data-lucide="x" aria-hidden="true"></i></button><div id="checkoutContent"></div></dialog>
+  <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+    <button class="close-button auth-close" id="closeAuth" type="button" aria-label="Đóng tài khoản"><i data-lucide="x" aria-hidden="true"></i></button>
+    <div class="auth-layout">
+      <section class="auth-art" aria-label="Mobi House, công nghệ cho phong cách riêng">
+        <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=1000&q=85" alt="Điện thoại thông minh trong không gian công nghệ">
+        <div class="auth-art-copy"><p class="eyebrow">THÀNH VIÊN MOBI HOUSE</p><h2>Công nghệ tốt.<br>Sống theo cách riêng.</h2><p>Ưu đãi dành riêng cho bạn, cùng trải nghiệm mua sắm an tâm.</p></div>
+      </section>
+      <section class="auth-content" id="authContent">
+        <a class="brand auth-brand" href="#top" aria-label="Mobi House"><span class="brand-mark" aria-hidden="true">m</span><span>MOBI<span class="brand-light">HOUSE</span></span></a>
+        <p class="eyebrow auth-eyebrow">TÀI KHOẢN CỦA BẠN</p>
+        <h2 id="authTitle">Đăng nhập</h2>
+        <p class="auth-description" id="authDescription">Đăng nhập để theo dõi đơn hàng và nhận ưu đãi riêng.</p>
+        <div class="auth-tabs" id="authTabs" role="tablist" aria-label="Chọn hình thức tài khoản">
+          <button type="button" role="tab" data-auth-tab="login" aria-selected="true">Đăng nhập</button>
+          <button type="button" role="tab" data-auth-tab="register" aria-selected="false">Tạo tài khoản</button>
+        </div>
+        <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
+        <form class="auth-form" id="authLoginForm" data-auth-panel="login">
+          <label class="auth-field">Email<input name="email" type="email" autocomplete="email" required placeholder="ban@email.com"></label>
+          <label class="auth-field">Mật khẩu<span class="auth-password"><input id="loginPassword" name="password" type="password" autocomplete="current-password" required placeholder="Nhập mật khẩu"><button class="password-toggle" type="button" data-password-toggle="loginPassword" aria-label="Hiện mật khẩu" title="Hiện mật khẩu"><i data-lucide="eye" aria-hidden="true"></i></button></span></label>
+          <div class="auth-form-options"><label class="auth-check"><input name="remember" type="checkbox"><span class="custom-check"></span> Ghi nhớ đăng nhập</label><button class="auth-link" type="button" data-auth-view="forgot">Quên mật khẩu?</button></div>
+          <button class="button button-dark auth-submit" type="submit">Đăng nhập <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        </form>
+        <form class="auth-form" id="authRegisterForm" data-auth-panel="register" hidden>
+          <label class="auth-field">Họ và tên<input name="name" autocomplete="name" required minlength="2" placeholder="Nguyễn Minh Anh"></label>
+          <label class="auth-field">Email<input name="email" type="email" autocomplete="email" required placeholder="ban@email.com"></label>
+          <label class="auth-field">Mật khẩu<span class="auth-password"><input id="registerPassword" name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="Ít nhất 8 ký tự"><button class="password-toggle" type="button" data-password-toggle="registerPassword" aria-label="Hiện mật khẩu" title="Hiện mật khẩu"><i data-lucide="eye" aria-hidden="true"></i></button></span></label>
+          <label class="auth-check auth-terms"><input name="terms" type="checkbox" required><span class="custom-check"></span><span>Tôi đồng ý với điều khoản sử dụng và chính sách bảo mật.</span></label>
+          <button class="button button-dark auth-submit" type="submit">Tạo tài khoản <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        </form>
+        <form class="auth-form" id="authForgotForm" data-auth-panel="forgot" hidden>
+          <label class="auth-field">Email tài khoản<input name="email" type="email" autocomplete="email" required placeholder="ban@email.com"></label>
+          <button class="button button-dark auth-submit" type="submit">Gửi hướng dẫn đặt lại <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+          <button class="auth-back" type="button" data-auth-view="login"><i data-lucide="arrow-left" aria-hidden="true"></i> Quay lại đăng nhập</button>
+        </form>
+        <section class="auth-account" data-auth-panel="account" hidden>
+          <div class="account-avatar" id="accountAvatar">M</div>
+          <h3 id="accountPanelName">Tài khoản của bạn</h3>
+          <p id="accountPanelEmail"></p>
+          <p class="account-note">Phiên đăng nhập đang được quản lý an toàn bởi máy chủ.</p>
+          <button class="auth-back logout-button" id="logoutButton" type="button"><i data-lucide="log-out" aria-hidden="true"></i> Đăng xuất</button>
+        </section>
+        <p class="auth-privacy"><i data-lucide="shield-check" aria-hidden="true"></i> Mật khẩu không được lưu trên thiết bị này.</p>
+      </section>
+    </div>
+  </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
