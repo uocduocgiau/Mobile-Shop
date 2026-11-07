@@ -1,12 +1,12 @@
 services:
   - type: web
-    name: mobi-house
+    name: mobile-shop
     runtime: python
     plan: starter
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
     disk:
-      name: mobi-house-data
+      name: mobile-shop-data
       mountPath: /var/data
       sizeGB: 1
     envVars:

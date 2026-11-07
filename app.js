@@ -9,6 +9,48 @@ const products = [
   { id: "redmi-note-15", name: "Redmi Note 15 Pro+", brand: "Xiaomi", price: 11990000, oldPrice: 13990000, badge: "GIÁ TỐT", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=82", bg: "#e8e4f0", storage: "256GB", color: "Tím Khói", screen: "6.67 inch", camera: "200MP", stock: false, rating: "4.6", reviews: 129, description: "Lựa chọn hiệu năng cao trong tầm giá dễ tiếp cận, trang bị màn hình sáng và camera độ phân giải lớn." }
 ];
 
+const addedModels = [
+  { id: "oneplus-13", name: "OnePlus 13", brand: "OnePlus", price: 24990000, storage: "512GB", color: "Đen Vũ Trụ", screen: "6.82 inch", camera: "50MP Hasselblad" },
+  { id: "oneplus-13r", name: "OnePlus 13R", brand: "OnePlus", price: 16990000, storage: "256GB", color: "Đen", screen: "6.78 inch", camera: "50MP" },
+  { id: "oneplus-nord-5", name: "OnePlus Nord 5", brand: "OnePlus", price: 12990000, storage: "256GB", color: "Xám", screen: "6.83 inch", camera: "50MP" },
+  { id: "oneplus-nord-ce5", name: "OnePlus Nord CE5", brand: "OnePlus", price: 8990000, storage: "256GB", color: "Đen", screen: "6.77 inch", camera: "50MP" },
+  { id: "oneplus-open", name: "OnePlus Open", brand: "OnePlus", price: 32990000, storage: "512GB", color: "Đen Ngọc", screen: "7.82 inch gập", camera: "48MP Hasselblad" },
+  { id: "vivo-x200-pro", name: "vivo X200 Pro", brand: "Vivo", price: 29990000, storage: "512GB", color: "Xanh Titan", screen: "6.78 inch", camera: "50MP ZEISS" },
+  { id: "vivo-x200", name: "vivo X200", brand: "Vivo", price: 21990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "50MP ZEISS" },
+  { id: "vivo-v50", name: "vivo V50", brand: "Vivo", price: 13990000, storage: "256GB", color: "Hồng Mộng Mơ", screen: "6.77 inch", camera: "50MP ZEISS" },
+  { id: "vivo-y300-pro", name: "vivo Y300 Pro", brand: "Vivo", price: 9990000, storage: "256GB", color: "Titan Bạc", screen: "6.77 inch", camera: "50MP" },
+  { id: "vivo-y300", name: "vivo Y300", brand: "Vivo", price: 7490000, storage: "128GB", color: "Xanh Đại Dương", screen: "6.67 inch", camera: "50MP" },
+  { id: "tecno-camon-40-premier", name: "TECNO Camon 40 Premier 5G", brand: "Tecno", price: 10990000, storage: "512GB", color: "Đen", screen: "6.67 inch", camera: "50MP Sony" },
+  { id: "tecno-camon-40-pro", name: "TECNO Camon 40 Pro 5G", brand: "Tecno", price: 8490000, storage: "256GB", color: "Xanh Ngọc", screen: "6.78 inch", camera: "50MP" },
+  { id: "tecno-pova-7-ultra", name: "TECNO Pova 7 Ultra 5G", brand: "Tecno", price: 7990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "108MP" },
+  { id: "tecno-spark-40-pro-plus", name: "TECNO Spark 40 Pro+", brand: "Tecno", price: 5990000, storage: "256GB", color: "Trắng Ngọc", screen: "6.78 inch", camera: "50MP" },
+  { id: "tecno-phantom-v-fold2", name: "TECNO Phantom V Fold2", brand: "Tecno", price: 24990000, storage: "512GB", color: "Xám", screen: "7.85 inch gập", camera: "50MP" },
+  { id: "honor-magic7-pro", name: "HONOR Magic7 Pro", brand: "Honor", price: 26990000, storage: "512GB", color: "Đen", screen: "6.8 inch", camera: "50MP AI Falcon" },
+  { id: "honor-magic-v3", name: "HONOR Magic V3", brand: "Honor", price: 32990000, storage: "512GB", color: "Xanh Lá", screen: "7.92 inch gập", camera: "50MP" },
+  { id: "honor-400-pro", name: "HONOR 400 Pro", brand: "Honor", price: 17990000, storage: "512GB", color: "Đen Nguyệt Thực", screen: "6.7 inch", camera: "200MP AI" },
+  { id: "honor-x9c", name: "HONOR X9c", brand: "Honor", price: 8490000, storage: "256GB", color: "Tím", screen: "6.78 inch", camera: "108MP" },
+  { id: "honor-x8c", name: "HONOR X8c", brand: "Honor", price: 6990000, storage: "256GB", color: "Xanh Mây", screen: "6.7 inch", camera: "108MP" }
+];
+
+const addedProductImages = {
+  OnePlus: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=82",
+  Vivo: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=82",
+  Tecno: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82",
+  Honor: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=82"
+};
+const addedProductBackgrounds = { OnePlus: "#e6eadb", Vivo: "#dfe9ef", Tecno: "#efe7dc", Honor: "#e9e3ed" };
+products.push(...addedModels.map((product, index) => ({
+  ...product,
+  oldPrice: null,
+  badge: index % 5 === 0 ? "MỚI VỀ" : "CHÍNH HÃNG",
+  image: addedProductImages[product.brand],
+  bg: addedProductBackgrounds[product.brand],
+  stock: true,
+  rating: "4.7",
+  reviews: 28 + index * 7,
+  description: `${product.name} thuộc dòng ${product.brand} chính hãng, cấu hình ${product.storage} và camera ${product.camera}. Liên hệ Mobile Shop để xác nhận phiên bản, màu sắc và tồn kho.`
+})));
+
 const state = {
   category: "Tất cả",
   brands: new Set(),
@@ -80,7 +122,7 @@ function setAuthStatus(message = "", kind = "error") {
 function setAuthView(view) {
   const views = {
     login: ["Đăng nhập", "Đăng nhập để theo dõi đơn hàng và nhận ưu đãi riêng."],
-    register: ["Tạo tài khoản", "Tham gia Mobi House để trải nghiệm mua sắm thuận tiện hơn."],
+    register: ["Tạo tài khoản", "Tham gia Mobile Shop để trải nghiệm mua sắm thuận tiện hơn."],
     forgot: ["Đặt lại mật khẩu", "Nhập email, chúng tôi sẽ gửi hướng dẫn nếu tài khoản tồn tại."],
     reset: ["Tạo mật khẩu mới", "Chọn mật khẩu mới có ít nhất 8 ký tự."],
     account: ["Tài khoản của bạn", "Thông tin tài khoản đang đăng nhập."]
@@ -180,6 +222,62 @@ function renderCategories() {
   $("#brandOptions").innerHTML = Object.entries(counts).map(([brand, count]) => `<label class="brand-option"><input type="checkbox" value="${safeText(brand)}" ${state.brands.has(brand) ? "checked" : ""}><span class="brand-check"></span>${safeText(brand)}<span class="brand-total">${count}</span></label>`).join("");
 }
 
+function renderRepairOptions() {
+  const brands = [...new Set(products.map((product) => product.brand))].sort((a, b) => a.localeCompare(b, "vi"));
+  $("#repairBrand").innerHTML = `<option value="">Chọn hãng</option>${brands.map((brand) => `<option value="${safeText(brand)}">${safeText(brand)}</option>`).join("")}`;
+  updateRepairModels();
+  const today = new Date();
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  $("#repairDate").min = today.toISOString().slice(0, 10);
+}
+
+function updateRepairModels() {
+  const selectedBrand = $("#repairBrand").value;
+  const models = [...new Set(products.filter((product) => !selectedBrand || product.brand === selectedBrand).map((product) => product.name))];
+  $("#repairModels").innerHTML = models.map((model) => `<option value="${safeText(model)}"></option>`).join("");
+}
+
+function setRepairStatus(message = "", kind = "error") {
+  const status = $("#repairStatus");
+  status.textContent = message;
+  status.classList.toggle("success", kind === "success");
+  status.classList.toggle("error", kind === "error");
+}
+
+function selectRepairType(type) {
+  $("#repairType").value = type;
+  document.querySelectorAll("[data-repair-type]").forEach((button) => button.classList.toggle("active", button.dataset.repairType === type));
+  setRepairStatus();
+}
+
+async function submitRepairForm(form) {
+  const submitButton = form.querySelector("button[type='submit']");
+  submitButton.disabled = true;
+  setRepairStatus("Đang gửi yêu cầu...");
+  const data = Object.fromEntries(new FormData(form));
+  try {
+    const response = await fetch("/api/repairs", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const detail = typeof result.detail === "string" ? result.detail : "";
+      throw new Error(detail || "Chưa gửi được yêu cầu. Vui lòng kiểm tra thông tin và thử lại.");
+    }
+    form.reset();
+    selectRepairType("battery");
+    updateRepairModels();
+    setRepairStatus(`Đã nhận lịch ${result.booking.code}. Mobile Shop sẽ gọi xác nhận ngày hẹn.`, "success");
+  } catch (error) {
+    setRepairStatus(error.message || "Không kết nối được máy chủ. Hãy thử lại sau.");
+  } finally {
+    submitButton.disabled = false;
+  }
+}
+
 function filteredProducts() {
   let visible = products.filter((product) => {
     const text = `${product.name} ${product.brand} ${product.storage}`.toLocaleLowerCase("vi");
@@ -233,7 +331,7 @@ function renderCart() {
     return `<article class="cart-item"><div class="cart-item-image"><img src="${product.image}" alt="" loading="lazy"></div><div class="cart-item-copy"><h3>${safeText(product.name)}</h3><p>${safeText(product.storage)} · ${safeText(product.color)}</p><div class="quantity-control"><button type="button" data-quantity="${product.id}" data-delta="-1" aria-label="Giảm số lượng">−</button><span>${item.quantity}</span><button type="button" data-quantity="${product.id}" data-delta="1" aria-label="Tăng số lượng">+</button></div></div><div class="cart-item-end"><strong>${money(product.price * item.quantity)}</strong><button class="remove-item" data-remove="${product.id}" type="button" aria-label="Xóa ${safeText(product.name)}"><i data-lucide="trash-2" aria-hidden="true"></i></button></div></article>`;
   }).join("");
   const subtotal = state.cart.reduce((total, item) => total + (products.find((product) => product.id === item.id)?.price || 0) * item.quantity, 0);
-  const discount = state.coupon === "MOBI10" ? Math.round(subtotal * .1) : 0;
+  const discount = ["SHOP10", "MOBI10"].includes(state.coupon) ? Math.round(subtotal * .1) : 0;
   const shipping = subtotal >= 5000000 ? 0 : 30000;
   $("#subtotalValue").textContent = money(subtotal);
   $("#shippingValue").textContent = shipping ? money(shipping) : "Miễn phí";
@@ -280,8 +378,19 @@ function openProduct(productId) {
 function openCheckout() {
   if (!state.cart.length) return;
   const subtotal = state.cart.reduce((total, item) => total + (products.find((product) => product.id === item.id)?.price || 0) * item.quantity, 0);
-  const total = subtotal + (subtotal >= 5000000 ? 0 : 30000) - (state.coupon === "MOBI10" ? Math.round(subtotal * .1) : 0);
-  $("#checkoutContent").innerHTML = `<div class="checkout-content"><p class="eyebrow">MỘT BƯỚC CUỐI CÙNG</p><h2 id="checkoutTitle">Thông tin nhận hàng</h2><p>Điền thông tin để Mobi House chuẩn bị đơn hàng cho bạn.</p><form id="checkoutForm"><div class="checkout-fields"><label class="checkout-field">Họ và tên<input name="name" autocomplete="name" required placeholder="Nguyễn Minh Anh"></label><label class="checkout-field">Số điện thoại<input name="phone" type="tel" autocomplete="tel" pattern="[0-9+ ()-]{9,15}" required placeholder="09xx xxx xxx"></label><label class="checkout-field full">Địa chỉ nhận hàng<input name="address" autocomplete="street-address" required placeholder="Số nhà, đường, phường/xã, tỉnh/thành"></label><label class="checkout-field full">Phương thức thanh toán<select name="payment"><option>Thanh toán khi nhận hàng</option><option>Chuyển khoản ngân hàng</option><option>Thẻ tín dụng / trả góp 0%</option></select></label><label class="checkout-field full">Ghi chú<textarea name="note" placeholder="Thời gian nhận hàng hoặc lưu ý khác"></textarea></label></div><div class="checkout-review"><p><span>${state.cart.reduce((sum, item) => sum + item.quantity, 0)} sản phẩm · giao hàng ${subtotal >= 5000000 ? "miễn phí" : money(30000)}</span><strong>${money(total)}</strong></p></div><button class="button button-dark checkout-submit" type="submit">Xác nhận đặt hàng <i data-lucide="arrow-right" aria-hidden="true"></i></button></form></div>`;
+  const discount = ["SHOP10", "MOBI10"].includes(state.coupon) ? Math.round(subtotal * .1) : 0;
+  const total = subtotal + (subtotal >= 5000000 ? 0 : 30000) - discount;
+  $("#checkoutContent").innerHTML = `<div class="checkout-content">
+    <p class="eyebrow">MỘT BƯỚC CUỐI CÙNG</p><h2 id="checkoutTitle">Thông tin nhận hàng</h2>
+    <p>Điền thông tin để Mobile Shop chuẩn bị đơn hàng cho bạn.</p>
+    <form id="checkoutForm"><div class="checkout-fields">
+      <label class="checkout-field">Họ và tên<input name="name" autocomplete="name" required placeholder="Nguyễn Minh Anh"></label>
+      <label class="checkout-field">Số điện thoại<input name="phone" type="tel" autocomplete="tel" pattern="[0-9+ ()-]{9,15}" required placeholder="09xx xxx xxx"></label>
+      <label class="checkout-field full">Địa chỉ nhận hàng<input name="address" autocomplete="street-address" required placeholder="Số nhà, đường, phường/xã, tỉnh/thành"></label>
+      <label class="checkout-field full">Phương thức thanh toán<select name="payment"><option>Thanh toán khi nhận hàng</option><option>Chuyển khoản ngân hàng</option><option>Thẻ tín dụng / trả góp 0%</option></select></label>
+      <label class="checkout-field full">Ghi chú<textarea name="note" placeholder="Thời gian nhận hàng hoặc lưu ý khác"></textarea></label>
+    </div><div class="checkout-review"><p><span>${state.cart.reduce((sum, item) => sum + item.quantity, 0)} sản phẩm · giao hàng ${subtotal >= 5000000 ? "miễn phí" : money(30000)}</span><strong>${money(total)}</strong></p></div>
+    <button class="button button-dark checkout-submit" type="submit">Xác nhận đặt hàng <i data-lucide="arrow-right" aria-hidden="true"></i></button></form></div>`;
   $("#checkoutDialog").showModal();
   renderIcons();
 }
@@ -323,7 +432,8 @@ document.addEventListener("click", (event) => {
     state.cart = state.cart.filter((item) => item.id !== target.dataset.remove);
     saveState();
     renderCart();
-  } else if (target.id === "openCart") setCartOpen(true);
+  } else if (target.dataset.repairType) selectRepairType(target.dataset.repairType);
+  else if (target.id === "openCart") setCartOpen(true);
   else if (target.id === "closeCart" || target.id === "continueShopping") setCartOpen(false);
   else if (target.id === "accountButton") openAuthDialog();
   else if (target.id === "closeAuth") $("#authDialog").close();
@@ -353,7 +463,7 @@ document.addEventListener("click", (event) => {
     renderProducts();
   } else if (target.id === "clearFilters" || target.id === "emptyReset") resetFilters();
   else if (target.id === "copyCoupon") {
-    navigator.clipboard?.writeText("MOBI10").then(() => showToast("Đã sao chép mã MOBI10.")).catch(() => showToast("Mã ưu đãi: MOBI10"));
+    navigator.clipboard?.writeText("SHOP10").then(() => showToast("Đã sao chép mã SHOP10.")).catch(() => showToast("Mã ưu đãi: SHOP10"));
   }
 });
 
@@ -370,6 +480,11 @@ document.addEventListener("keydown", (event) => {
 });
 
 $("#searchInput").addEventListener("input", (event) => { state.query = event.target.value.trim(); renderProducts(); });
+$("#repairBrand").addEventListener("change", updateRepairModels);
+$("#repairForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (event.target.reportValidity()) submitRepairForm(event.target);
+});
 $("#authContent").addEventListener("submit", (event) => {
   if (!["authLoginForm", "authRegisterForm", "authForgotForm", "authResetForm"].includes(event.target.id)) return;
   event.preventDefault();
@@ -393,12 +508,12 @@ $("#overlay").addEventListener("click", () => setCartOpen(false));
 $("#couponForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const value = $("#couponInput").value.trim().toUpperCase();
-  if (value === "MOBI10") {
+  if (["SHOP10", "MOBI10"].includes(value)) {
     state.coupon = value;
     $("#couponMessage").textContent = "Áp dụng thành công: giảm 10% đơn hàng.";
   } else {
     state.coupon = "";
-    $("#couponMessage").textContent = "Mã chưa hợp lệ. Thử mã MOBI10 nhé.";
+    $("#couponMessage").textContent = "Mã chưa hợp lệ. Thử mã SHOP10 nhé.";
   }
   renderCart();
 });
@@ -413,7 +528,7 @@ $("#checkoutContent").addEventListener("submit", (event) => {
   const formData = new FormData(event.target);
   const name = safeText(formData.get("name").trim());
   const orderNumber = `MH${Date.now().toString().slice(-7)}`;
-  $("#checkoutContent").innerHTML = `<div class="success-content"><span class="success-mark"><i data-lucide="check" aria-hidden="true"></i></span><p class="eyebrow">ĐẶT HÀNG THÀNH CÔNG</p><h2>Cảm ơn ${name}!</h2><p>Đơn hàng <strong>${orderNumber}</strong> đã được ghi nhận. Nhân viên Mobi House sẽ liên hệ xác nhận sớm.</p><button class="button button-dark" id="finishOrder" type="button">Tiếp tục mua sắm</button></div>`;
+  $("#checkoutContent").innerHTML = `<div class="success-content"><span class="success-mark"><i data-lucide="check" aria-hidden="true"></i></span><p class="eyebrow">ĐẶT HÀNG THÀNH CÔNG</p><h2>Cảm ơn ${name}!</h2><p>Đơn hàng <strong>${orderNumber}</strong> đã được ghi nhận. Nhân viên Mobile Shop sẽ liên hệ xác nhận sớm.</p><button class="button button-dark" id="finishOrder" type="button">Tiếp tục mua sắm</button></div>`;
   state.cart = [];
   state.coupon = "";
   saveState();
@@ -431,6 +546,7 @@ $("#productGrid").addEventListener("error", (event) => {
 }, true);
 
 renderCategories();
+renderRepairOptions();
 renderProducts();
 renderCart();
 renderAccount();

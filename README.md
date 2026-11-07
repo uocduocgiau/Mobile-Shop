@@ -1,6 +1,6 @@
 # Mobile-Shop
 
-## Mobi House
+## Mobile Shop
 
 [Deploy lên Render](https://render.com/deploy?repo=https://github.com/uocduocgiau/Mobile-Shop)
 
@@ -10,13 +10,15 @@ Website bán điện thoại responsive, viết bằng HTML, CSS và JavaScript 
 
 - Tìm kiếm, lọc thương hiệu, khoảng giá và tình trạng hàng; sắp xếp theo giá hoặc tên.
 - Xem chi tiết sản phẩm, lưu yêu thích và giỏ hàng được giữ trong trình duyệt.
-- Áp mã `MOBI10`, tính phí giao hàng và điền biểu mẫu đặt hàng demo.
+- Áp mã `SHOP10`, tính phí giao hàng và điền biểu mẫu đặt hàng demo.
+- Danh mục demo có 20 mẫu thuộc các dòng OnePlus, vivo, TECNO và HONOR; giá và tồn kho cần xác nhận với cửa hàng.
+- Đặt lịch kiểm tra/thay pin, màn hình, vỏ, camera và sửa main; API lưu phiếu vào SQLite.
 - Giao diện đăng nhập, đăng ký, quên mật khẩu và trạng thái tài khoản.
 - Đăng ký nhận tin giao diện, không gửi dữ liệu ra máy chủ.
 
 ### Lưu ý
 
-Website có API FastAPI trong `server.py`, lưu tài khoản trong SQLite, băm mật khẩu, cấp session cookie `HttpOnly`, giới hạn thử đăng nhập và hỗ trợ đăng xuất. Các API tài khoản gồm `GET /api/auth/me`, `POST /api/auth/login`, `POST /api/auth/register`, `POST /api/auth/logout`, `POST /api/auth/forgot-password` và `POST /api/auth/reset-password`. Email đặt lại mật khẩu cần SMTP; cấu hình bằng các biến môi trường trong `render.yaml` và đặt `PUBLIC_ORIGIN` thành URL HTTPS của website.
+Website có API FastAPI trong `server.py`, lưu tài khoản và phiếu sửa chữa vào SQLite, băm mật khẩu, cấp session cookie `HttpOnly`, giới hạn thử đăng nhập và hỗ trợ đặt lại mật khẩu qua email. API sửa chữa là `POST /api/repairs`; các API tài khoản gồm `GET /api/auth/me`, `POST /api/auth/login`, `POST /api/auth/register`, `POST /api/auth/logout`, `POST /api/auth/forgot-password` và `POST /api/auth/reset-password`. Email đặt lại mật khẩu cần SMTP; cấu hình bằng các biến môi trường trong `render.yaml` và đặt `PUBLIC_ORIGIN` thành URL HTTPS của website.
 
 Để chạy local, cài Python 3.11 trở lên, sau đó chạy `pip install -r requirements.txt` và `uvicorn server:app --reload`. Chạy test bằng `pip install -r requirements-dev.txt` rồi `pytest -q`.
 

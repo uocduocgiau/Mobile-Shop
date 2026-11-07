@@ -7,8 +7,10 @@ import smtplib
 import sqlite3
 import time
 from contextlib import contextmanager
+from datetime import date
 from email.message import EmailMessage
 from pathlib import Path
+from typing import Literal
 from urllib.parse import quote
 
 from fastapi import FastAPI, HTTPException, Request, Response
@@ -48,6 +50,17 @@ class EmailRequest(BaseModel):
 class ResetPasswordRequest(BaseModel):
     token: str = Field(min_length=20, max_length=200)
     password: str = Field(min_length=8, max_length=128)
+
+
+class RepairBookingRequest(BaseModel):
+    name: str = Field(min_length=2, max_length=100)
+    phone: str = Field(min_length=9, max_length=15)
+    brand: str = Field(min_length=2, max_length=50)
+    model: str = Field(min_length=2, max_length=100)
+    repair_type: Literal["battery", "screen", "back-glass", "camera", "mainboard"]
+    preferred_date: date
+    branch: str = Field(min_length=3, max_length=100)
+    note: str = Field(default="", max_length=500)
 
 
 @contextmanager
@@ -95,6 +108,19 @@ def initialize_database():
                 rate_key TEXT PRIMARY KEY,
                 window_started INTEGER NOT NULL,
                 attempts INTEGER NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS repair_requests (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                customer_name TEXT NOT NULL,
+                phone TEXT NOT NULL,
+                device_brand TEXT NOT NULL,
+                device_model TEXT NOT NULL,
+                repair_type TEXT NOT NULL CHECK (repair_type IN ('battery', 'screen', 'back-glass', 'camera', 'mainboard')),
+                preferred_date TEXT NOT NULL,
+                branch TEXT NOT NULL,
+                note TEXT NOT NULL DEFAULT '',
+                status TEXT NOT NULL DEFAULT 'received',
+                created_at INTEGER NOT NULL
             );
             """
         )
@@ -188,11 +214,11 @@ def send_password_reset_email(email: str, reset_url: str):
         raise RuntimeError("SMTP_HOST và SMTP_FROM chưa được cấu hình.")
     port = int(os.environ.get("SMTP_PORT", "587"))
     message = EmailMessage()
-    message["Subject"] = "Đặt lại mật khẩu Mobi House"
+    message["Subject"] = "Đặt lại mật khẩu Mobile Shop"
     message["From"] = sender
     message["To"] = email
     message.set_content(
-        "Bạn vừa yêu cầu đặt lại mật khẩu Mobi House. Mở liên kết sau trong vòng 60 phút:\n\n"
+        "Bạn vừa yêu cầu đặt lại mật khẩu Mobile Shop. Mở liên kết sau trong vòng 60 phút:\n\n"
         f"{reset_url}\n\nNếu bạn không yêu cầu, hãy bỏ qua email này."
     )
     with smtplib.SMTP(host, port, timeout=20) as smtp:
@@ -212,7 +238,7 @@ def frontend_origin(request: Request) -> str:
 
 
 initialize_database()
-app = FastAPI(title="Mobi House API", docs_url=None, redoc_url=None, openapi_url=None)
+app = FastAPI(title="Mobile Shop API", docs_url=None, redoc_url=None, openapi_url=None)
 
 
 @app.middleware("http")
@@ -236,6 +262,41 @@ async def protect_auth_requests(request: Request, call_next):
 @app.get("/api/health")
 def health():
     return {"status": "ok"}
+
+
+@app.post("/api/repairs", status_code=201)
+def create_repair_booking(payload: RepairBookingRequest, request: Request):
+    digits = re.sub(r"\D", "", payload.phone)
+    if not 9 <= len(digits) <= 11:
+        raise HTTPException(status_code=422, detail="Số điện thoại cần có từ 9 đến 11 chữ số.")
+    if payload.preferred_date < date.today():
+        raise HTTPException(status_code=422, detail="Ngày hẹn không được ở trong quá khứ.")
+    enforce_rate_limit("repair", request_identity(request), 5)
+    now = int(time.time())
+    with database() as connection:
+        cursor = connection.execute(
+            "INSERT INTO repair_requests(customer_name, phone, device_brand, device_model, repair_type, preferred_date, branch, note, created_at) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (
+                payload.name.strip(),
+                payload.phone.strip(),
+                payload.brand.strip(),
+                payload.model.strip(),
+                payload.repair_type,
+                payload.preferred_date.isoformat(),
+                payload.branch.strip(),
+                payload.note.strip(),
+                now,
+            ),
+        )
+        request_id = cursor.lastrowid
+    return {
+        "booking": {
+            "code": f"MS-{date.today():%y%m}-{request_id:06d}",
+            "status": "received",
+            "preferred_date": payload.preferred_date.isoformat(),
+        }
+    }
 
 
 @app.post("/api/auth/register", status_code=201)
@@ -270,7 +331,7 @@ def login(payload: LoginRequest, request: Request, response: Response):
     with database() as connection:
         user = connection.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
     if not user:
-        hash_password(payload.password, b"mobi-house-dummy-salt")
+        hash_password(payload.password, b"mobile-shop-dummy-salt")
         raise HTTPException(status_code=401, detail="Email hoặc mật khẩu không chính xác.")
     candidate = hash_password(payload.password, user["password_salt"])[1]
     if not hmac.compare_digest(candidate, user["password_hash"]):

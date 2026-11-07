@@ -1,5 +1,6 @@
 import os
 import tempfile
+from datetime import date, timedelta
 from urllib.parse import parse_qs, urlparse
 
 import pytest
@@ -106,3 +107,43 @@ def test_auth_rejects_cross_origin_post(client):
     )
 
     assert response.status_code == 403
+
+
+def test_repair_booking_is_saved_and_returns_reference(client):
+    test_client, _ = client
+    payload = {
+        "name": "Minh Anh",
+        "phone": "0912345678",
+        "brand": "OnePlus",
+        "model": "OnePlus 13",
+        "repair_type": "screen",
+        "preferred_date": (date.today() + timedelta(days=3)).isoformat(),
+        "branch": "Mobile Shop - Hà Nội",
+        "note": "Màn hình có vết nứt.",
+    }
+
+    response = test_client.post("/api/repairs", json=payload)
+
+    assert response.status_code == 201
+    assert response.json()["booking"]["code"].startswith("MS-")
+    with server.database() as connection:
+        saved = connection.execute("SELECT device_brand, device_model, repair_type, status FROM repair_requests").fetchone()
+    assert tuple(saved) == ("OnePlus", "OnePlus 13", "screen", "received")
+
+
+def test_repair_booking_rejects_invalid_phone_and_past_date(client):
+    test_client, _ = client
+    payload = {
+        "name": "Minh Anh",
+        "phone": "abc123456",
+        "brand": "Honor",
+        "model": "HONOR Magic7 Pro",
+        "repair_type": "battery",
+        "preferred_date": (date.today() - timedelta(days=1)).isoformat(),
+        "branch": "Mobile Shop - Đà Nẵng",
+        "note": "",
+    }
+
+    assert test_client.post("/api/repairs", json=payload).status_code == 422
+    payload["phone"] = "0912345678"
+    assert test_client.post("/api/repairs", json=payload).status_code == 422

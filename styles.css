@@ -112,6 +112,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 .catalog-aside { padding-top: 16px; }
 .aside-block h3 { margin: 0 0 14px; font: 600 12px var(--font-display); }
 .brand-options { display: grid; gap: 12px; }
+.brand-options { max-height: 340px; overflow-y: auto; }
 .brand-option { display: flex; align-items: center; gap: 9px; color: #62685f; cursor: pointer; font-size: 10px; }
 .brand-option input { position: absolute; opacity: 0; }
 .brand-check { width: 14px; height: 14px; display: grid; place-items: center; border: 1px solid #cbd0c5; border-radius: 2px; background: white; }
@@ -156,6 +157,43 @@ h1, h2, h3 { font-family: var(--font-display); }
 .empty-icon { width: 50px; height: 50px; display: grid; place-items: center; margin-bottom: 15px; border-radius: 50%; background: #e9edde; }
 .empty-state h3 { margin: 0 0 8px; font-size: 17px; }
 .empty-state p { margin: 0 0 18px; color: var(--muted); font-size: 11px; }
+.catalog-notice { margin: -13px 0 22px; color: #777d73; font-size: 10px; }
+.repair-section { padding: 72px max(calc((100vw - 1180px) / 2), 5.2vw); background: #e9eee2; }
+.repair-heading { max-width: 1180px; display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 0 auto 30px; }
+.repair-heading .eyebrow { margin-bottom: 10px; }
+.repair-heading h2 { margin: 0; font-size: 36px; line-height: 1.08; }
+.repair-heading h2 span { color: #71843d; }
+.repair-heading > p { max-width: 340px; margin: 0 0 3px; color: #687064; font-size: 11px; line-height: 1.7; }
+.repair-layout { max-width: 1180px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, .92fr); gap: 35px; margin: 0 auto; align-items: start; }
+.repair-service-list { display: grid; }
+.repair-service { width: 100%; min-height: 78px; display: grid; grid-template-columns: 39px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 12px; border: 0; border-bottom: 1px solid #d5dccd; background: transparent; text-align: left; cursor: pointer; transition: background .18s ease; }
+.repair-service:hover, .repair-service.active { background: rgba(255,255,255,.72); }
+.repair-service.active { box-shadow: inset 3px 0 var(--lime-deep); }
+.repair-service-icon { width: 34px; height: 34px; display: grid; place-items: center; background: #dce5d1; }
+.repair-service-icon svg { width: 17px; height: 17px; }
+.repair-service strong, .repair-service small { display: block; }
+.repair-service strong { font: 600 12px var(--font-display); }
+.repair-service small { margin-top: 5px; color: #73796e; font-size: 9px; }
+.repair-estimate { color: #52642c; font-size: 9px; font-weight: 700; text-align: right; white-space: nowrap; }
+.repair-disclaimer { margin: 13px 0 0; color: #73796e; font-size: 9px; line-height: 1.6; }
+.repair-form { padding: 23px; border: 1px solid #e1e5da; background: #fff; }
+.repair-form-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 17px; }
+.repair-form-heading .eyebrow { margin-bottom: 6px; }
+.repair-form-heading h3 { margin: 0; font-size: 18px; }
+.repair-form-mark { width: 35px; height: 35px; display: grid; place-items: center; background: var(--lime); }
+.repair-form-mark svg { width: 17px; height: 17px; }
+.repair-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.repair-field { min-width: 0; display: grid; gap: 6px; color: #555b52; font-size: 9px; }
+.repair-field-wide { grid-column: 1 / -1; }
+.repair-field input, .repair-field select, .repair-field textarea { width: 100%; min-width: 0; min-height: 39px; padding: 0 10px; border: 1px solid #dfe3da; outline-color: #9ab84e; border-radius: 0; background: #fff; color: var(--ink); font-size: 10px; }
+.repair-field textarea { min-height: 64px; padding: 9px 10px; resize: vertical; }
+.repair-status { display: none; padding: 9px 10px; margin: 12px 0 0; background: #fff0ed; color: #a54337; font-size: 10px; line-height: 1.5; }
+.repair-status.error:not(:empty) { display: block; }
+.repair-status.success:not(:empty) { display: block; background: #edf4df; color: #526d26; }
+.repair-submit { width: 100%; min-height: 44px; margin-top: 14px; }
+.repair-submit:disabled { opacity: .65; cursor: wait; }
+.repair-privacy { display: flex; align-items: center; justify-content: center; gap: 5px; margin: 9px 0 0; color: #858a81; font-size: 8px; }
+.repair-privacy svg { width: 13px; height: 13px; }
 .newsletter { position: relative; min-height: 235px; padding: 43px max(calc((100vw - 950px) / 2), 8vw); display: flex; justify-content: space-between; align-items: center; gap: 50px; overflow: hidden; background: var(--blue); }
 .newsletter .eyebrow { color: #68798e; }
 .newsletter h2 { margin: 0; font-size: 27px; line-height: 1.24; }
@@ -316,6 +354,8 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .trust-item small { max-width: 140px; }
   .catalog-section { margin-right: 4vw; margin-left: 4vw; }
   .catalog-layout { grid-template-columns: 145px 1fr; gap: 23px; }
+  .repair-layout { grid-template-columns: minmax(0, 1fr) minmax(350px, .95fr); gap: 20px; }
+  .repair-form { padding: 18px; }
   .product-grid { gap: 28px 13px; }
   .product-image-wrap { height: 205px; }
   .footer-meta { gap: 12px; }
@@ -380,6 +420,21 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .results-line { font-size: 9px; }
   .favorites-filter { font-size: 9px; }
   .newsletter { min-height: 0; align-items: stretch; flex-direction: column; gap: 23px; padding: 33px 8vw; }
+  .catalog-notice { margin: -8px 0 17px; font-size: 9px; line-height: 1.5; }
+  .repair-section { padding: 47px 6vw; }
+  .repair-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+  .repair-heading h2 { font-size: 29px; }
+  .repair-heading > p { max-width: 100%; font-size: 10px; }
+  .repair-layout { grid-template-columns: 1fr; gap: 22px; }
+  .repair-service { min-height: 70px; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 9px; padding: 8px 7px; }
+  .repair-service-icon { width: 30px; height: 30px; }
+  .repair-service strong { font-size: 11px; }
+  .repair-service small { font-size: 8px; }
+  .repair-estimate { max-width: 86px; font-size: 8px; white-space: normal; }
+  .repair-form { padding: 17px 14px; }
+  .repair-fields { gap: 10px; }
+  .repair-field { font-size: 8px; }
+  .repair-field input, .repair-field select, .repair-field textarea { padding-right: 7px; padding-left: 7px; font-size: 9px; }
   .newsletter h2 { font-size: 23px; }
   .newsletter-form { width: 100%; }
   .newsletter-spark { right: -5%; bottom: 5px; font-size: 130px; }
