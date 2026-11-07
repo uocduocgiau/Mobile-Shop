@@ -37,6 +37,7 @@
     </a>
     <nav class="main-nav" aria-label="Điều hướng chính">
       <a class="active" href="#products" data-view-link="shop" aria-current="page">Điện thoại</a>
+      <a href="#accessories" data-view-link="accessories">Phụ kiện</a>
       <a href="#repairs" data-view-link="repair">Sửa chữa</a>
       <a href="#benefits" data-view-link="shop">Chính sách</a>
       <a href="#footer">Về chúng tôi</a>
@@ -155,6 +156,20 @@
           <div class="empty-state" id="emptyState" hidden><span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span><h3>Chưa tìm thấy sản phẩm phù hợp</h3><p>Thử đổi từ khóa hoặc xóa bớt bộ lọc nhé.</p><button class="button button-dark" id="emptyReset" type="button">Xem tất cả sản phẩm</button></div>
         </div>
       </div>
+    </section>
+
+    <section class="accessory-view" id="accessories" aria-labelledby="accessoryTitle" hidden>
+      <div class="accessory-heading">
+        <div><p class="eyebrow">PHỤ KIỆN CHÍNH HÃNG</p><h1 id="accessoryTitle">Đồ hay cho<br><span>mọi kết nối.</span></h1></div>
+        <p>Từ nguồn pin dự phòng đến chiếc ốp vừa tay. Chọn món phù hợp với thiết bị và nhịp sống của bạn.</p>
+      </div>
+      <div class="accessory-toolbar">
+        <div class="accessory-categories" id="accessoryCategories" aria-label="Lọc loại phụ kiện"></div>
+        <label class="sort-control"><span>Sắp xếp:</span><select id="accessorySortSelect" aria-label="Sắp xếp phụ kiện"><option value="featured">Nổi bật</option><option value="price-asc">Giá tăng dần</option><option value="price-desc">Giá giảm dần</option><option value="name">Tên A-Z</option></select></label>
+      </div>
+      <div class="accessory-results"><span id="accessoryResultsCount">Đang tải phụ kiện...</span><span>Giá và tồn kho có thể thay đổi</span></div>
+      <div class="product-grid accessory-grid" id="accessoryProductGrid" aria-live="polite"></div>
+      <div class="empty-state" id="accessoryEmptyState" hidden><span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span><h3>Chưa có phụ kiện phù hợp</h3><p>Thử từ khóa hoặc nhóm sản phẩm khác nhé.</p></div>
     </section>
 
     <section class="newsletter shop-view" aria-labelledby="newsletterTitle">

@@ -11,6 +11,7 @@ Website bán điện thoại responsive, viết bằng HTML, CSS và JavaScript 
 - Tìm kiếm, lọc thương hiệu, khoảng giá và tình trạng hàng; sắp xếp theo giá hoặc tên.
 - Xem chi tiết sản phẩm, lưu yêu thích và giỏ hàng được giữ trong trình duyệt.
 - Áp mã `SHOP10`, tính phí giao hàng và điền biểu mẫu đặt hàng demo.
+- Mục Phụ kiện riêng gồm sạc dự phòng, dây/củ sạc, ốp điện thoại và kính cường lực; hỗ trợ lọc nhóm, tìm kiếm, xem chi tiết và thêm vào cùng giỏ hàng.
 - Danh mục demo có 20 mẫu thuộc các dòng OnePlus, vivo, TECNO và HONOR; giá và tồn kho cần xác nhận với cửa hàng.
 - Đặt lịch kiểm tra/thay pin, màn hình, vỏ, camera và sửa main; API lưu phiếu vào SQLite.
 - Giao diện đăng nhập, đăng ký, quên mật khẩu và trạng thái tài khoản.

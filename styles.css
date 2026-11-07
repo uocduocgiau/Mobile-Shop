@@ -113,6 +113,21 @@ h1, h2, h3 { font-family: var(--font-display); }
 .catalog-promo-bar strong { color: #4e6329; font: 700 11px var(--font-display); }
 .catalog-promo-bar button { display: inline-flex; align-items: center; gap: 6px; padding: 3px 0; border: 0; background: none; color: var(--ink); cursor: pointer; font-size: 9px; font-weight: 700; }
 .catalog-promo-bar button svg { width: 13px; height: 13px; }
+.accessory-view { max-width: 1280px; min-height: 65vh; padding: 74px 0 84px; margin: 0 auto; }
+.accessory-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 32px; }
+.accessory-heading .eyebrow { margin-bottom: 10px; }
+.accessory-heading h1 { margin: 0; font-size: clamp(38px, 4vw, 52px); line-height: 1.04; }
+.accessory-heading h1 span { color: #778a42; }
+.accessory-heading > p { max-width: 365px; margin: 0 0 3px; color: #687064; font-size: 11px; line-height: 1.7; }
+.accessory-toolbar { min-height: 52px; display: flex; justify-content: space-between; align-items: center; gap: 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.accessory-categories { min-width: 0; display: flex; align-items: center; gap: 25px; overflow-x: auto; scrollbar-width: none; }
+.accessory-categories::-webkit-scrollbar { display: none; }
+.accessory-category { position: relative; min-height: 50px; flex: 0 0 auto; padding: 0; border: 0; background: none; color: #777d73; cursor: pointer; font-size: 10px; }
+.accessory-category.active { color: var(--ink); font-weight: 700; }
+.accessory-category.active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: var(--ink); content: ""; }
+.accessory-results { display: flex; justify-content: space-between; gap: 12px; padding: 16px 0 13px; color: #777d73; font-size: 10px; }
+.accessory-grid { padding-bottom: 20px; }
+.accessory-empty { min-height: 280px; }
 .results-line { min-height: 34px; display: flex; justify-content: space-between; align-items: start; color: #777d73; font-size: 10px; }
 .favorites-filter { display: inline-flex; align-items: center; gap: 5px; padding: 0; border: 0; background: none; color: #777d73; cursor: pointer; font-size: 10px; }
 .favorites-filter svg { width: 14px; height: 14px; }
@@ -331,6 +346,7 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 1320px) { .trust-row, .catalog-section { margin-right: 5.2vw; margin-left: 5.2vw; } }
+@media (max-width: 1320px) { .accessory-view { margin-right: 5.2vw; margin-left: 5.2vw; } }
 @media (max-width: 1000px) {
   .site-header { gap: 18px; padding-right: 4vw; padding-left: 4vw; }
   .main-nav { gap: 19px; margin-left: 0; }
@@ -341,6 +357,7 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .trust-item { justify-content: start; padding: 0 10px; }
   .trust-item small { max-width: 140px; }
   .catalog-section { margin-right: 4vw; margin-left: 4vw; }
+  .accessory-view { margin-right: 4vw; margin-left: 4vw; }
   .repair-layout { grid-template-columns: minmax(0, 1fr) minmax(350px, .95fr); gap: 20px; }
   .repair-form { padding: 18px; }
   .product-grid { gap: 28px 13px; }
@@ -407,6 +424,15 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .favorites-filter { font-size: 9px; }
   .newsletter { min-height: 0; align-items: stretch; flex-direction: column; gap: 23px; padding: 33px 8vw; }
   .catalog-notice { margin: -8px 0 17px; font-size: 9px; line-height: 1.5; }
+  .accessory-view { min-height: 0; padding: 49px 0 57px; }
+  .accessory-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 19px; }
+  .accessory-heading h1 { font-size: 34px; }
+  .accessory-heading > p { max-width: 100%; font-size: 10px; }
+  .accessory-toolbar { align-items: stretch; flex-direction: column; gap: 0; }
+  .accessory-categories { min-height: 44px; gap: 18px; }
+  .accessory-category { min-height: 44px; font-size: 9px; }
+  .accessory-toolbar > .sort-control { min-height: 40px; justify-content: space-between; border-top: 1px solid var(--line); }
+  .accessory-results { font-size: 9px; }
   .repair-section { padding: 47px 6vw; }
   .repair-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 20px; }
   .repair-heading h2 { font-size: 29px; }

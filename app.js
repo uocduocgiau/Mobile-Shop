@@ -51,9 +51,28 @@ products.push(...addedModels.map((product, index) => ({
   description: `${product.name} thuộc dòng ${product.brand} chính hãng, cấu hình ${product.storage} và camera ${product.camera}. Liên hệ Mobile Shop để xác nhận phiên bản, màu sắc và tồn kho.`
 })));
 
+const accessoryProducts = [
+  { id: "anker-powercore-10k", name: "Anker PowerCore 10K", brand: "Anker", category: "power-bank", categoryLabel: "Sạc dự phòng", price: 790000, badge: "BÁN CHẠY", storage: "10.000 mAh · 20W", color: "Đen", compatibility: "Điện thoại USB-C và Lightning", warranty: "12 tháng", image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=82", bg: "#e4e9e1", stock: true, rating: "4.8", reviews: 86, description: "Pin dự phòng gọn nhẹ, hỗ trợ sạc nhanh 20W, tiện mang theo khi đi làm hoặc du lịch." },
+  { id: "baseus-adaman-20k", name: "Baseus Adaman 20.000 mAh", brand: "Baseus", category: "power-bank", categoryLabel: "Sạc dự phòng", price: 990000, badge: "SẠC NHANH", storage: "20.000 mAh · 22.5W", color: "Xám Titan", compatibility: "USB-A · USB-C", warranty: "12 tháng", image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=82", bg: "#e9e6df", stock: true, rating: "4.7", reviews: 44, description: "Dung lượng lớn, nhiều cổng sạc và màn hình hiển thị mức pin trực quan." },
+  { id: "xiaomi-power-bank-33w", name: "Xiaomi Power Bank 10.000 mAh", brand: "Xiaomi", category: "power-bank", categoryLabel: "Sạc dự phòng", price: 690000, badge: "GIÁ TỐT", storage: "10.000 mAh · 33W", color: "Bạc", compatibility: "USB-C · USB-A", warranty: "12 tháng", image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=82", bg: "#e3e9eb", stock: true, rating: "4.6", reviews: 52, description: "Thiết kế kim loại mỏng nhẹ, sạc nhanh hai chiều cho các thiết bị tương thích." },
+  { id: "anker-nano-30w", name: "Củ sạc Anker Nano 30W", brand: "Anker", category: "charger", categoryLabel: "Dây sạc & củ sạc", price: 490000, badge: "NHỎ GỌN", storage: "USB-C · 30W", color: "Trắng", compatibility: "Điện thoại, tablet USB-C", warranty: "18 tháng", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=82", bg: "#e8e8e2", stock: true, rating: "4.8", reviews: 61, description: "Củ sạc USB-C công suất 30W trong thân hình nhỏ gọn, phù hợp mang đi hằng ngày." },
+  { id: "ugreen-nexode-65w", name: "Củ sạc UGREEN Nexode 65W", brand: "UGREEN", category: "charger", categoryLabel: "Dây sạc & củ sạc", price: 1090000, badge: "ĐA CỔNG", storage: "3 cổng · 65W", color: "Xám", compatibility: "Laptop · tablet · điện thoại", warranty: "18 tháng", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=82", bg: "#e2e8e9", stock: true, rating: "4.8", reviews: 39, description: "Củ sạc GaN ba cổng, tự phân bổ công suất để sạc đồng thời nhiều thiết bị." },
+  { id: "belkin-boostcharge-cable", name: "Cáp Belkin USB-C to USB-C", brand: "Belkin", category: "charger", categoryLabel: "Dây sạc & củ sạc", price: 290000, badge: "BỀN BỈ", storage: "1 m · 60W", color: "Trắng", compatibility: "USB-C · Power Delivery", warranty: "12 tháng", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?auto=format&fit=crop&w=900&q=82", bg: "#e8e6e1", stock: true, rating: "4.6", reviews: 34, description: "Cáp sạc và truyền dữ liệu USB-C bọc bền, hỗ trợ sạc nhanh đến 60W." },
+  { id: "baseus-usb-c-cable", name: "Cáp Baseus Crystal Shine 100W", brand: "Baseus", category: "charger", categoryLabel: "Dây sạc & củ sạc", price: 250000, badge: "100W", storage: "1 m · 100W", color: "Đen", compatibility: "USB-C · Power Delivery", warranty: "12 tháng", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?auto=format&fit=crop&w=900&q=82", bg: "#e7e4df", stock: true, rating: "4.7", reviews: 41, description: "Cáp USB-C công suất cao, phù hợp điện thoại, tablet và laptop hỗ trợ Power Delivery." },
+  { id: "spigen-rugged-armor", name: "Ốp Spigen Rugged Armor", brand: "Spigen", category: "case", categoryLabel: "Ốp điện thoại", price: 490000, badge: "CHỐNG SỐC", storage: "Dòng iPhone 16/17", color: "Đen nhám", compatibility: "iPhone 16 · iPhone 17", warranty: "6 tháng", image: "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=82", bg: "#e7e6df", stock: true, rating: "4.8", reviews: 72, description: "Ốp TPU chống sốc với các góc gia cố, bề mặt nhám hạn chế bám vân tay." },
+  { id: "esr-halolock-case", name: "Ốp ESR HaloLock MagSafe", brand: "ESR", category: "case", categoryLabel: "Ốp điện thoại", price: 390000, badge: "MAGSAFE", storage: "Dòng iPhone 16/17", color: "Trong suốt", compatibility: "iPhone hỗ trợ MagSafe", warranty: "6 tháng", image: "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=82", bg: "#e6e9e5", stock: true, rating: "4.7", reviews: 58, description: "Ốp trong suốt có vòng nam châm, tương thích phụ kiện và sạc MagSafe." },
+  { id: "samsung-silicone-case", name: "Ốp silicon Samsung", brand: "Samsung", category: "case", categoryLabel: "Ốp điện thoại", price: 350000, badge: "VỪA VẶN", storage: "Galaxy S series", color: "Xanh rêu", compatibility: "Galaxy S25 · S26", warranty: "6 tháng", image: "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=82", bg: "#e4e9df", stock: true, rating: "4.6", reviews: 32, description: "Ốp silicon mềm, ôm sát thân máy, các nút bấm được làm nổi dễ thao tác." },
+  { id: "jettech-tempered-glass", name: "Kính cường lực JETech", brand: "JETech", category: "screen-protector", categoryLabel: "Kính cường lực", price: 190000, badge: "2 MIẾNG", storage: "9H · 2 miếng", color: "Trong suốt", compatibility: "iPhone 16 · iPhone 17", warranty: "Đổi lỗi lắp đặt", image: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82", bg: "#e6eceb", stock: true, rating: "4.6", reviews: 90, description: "Bộ kính cường lực trong suốt, phủ oleophobic giúp hạn chế dấu vân tay và trầy xước." },
+  { id: "spigen-glastr-samsung", name: "Kính Spigen Glas.tR EZ Fit", brand: "Spigen", category: "screen-protector", categoryLabel: "Kính cường lực", price: 390000, badge: "DỄ LẮP", storage: "9H · 2 miếng", color: "Trong suốt", compatibility: "Galaxy S25 · S26", warranty: "Đổi lỗi lắp đặt", image: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82", bg: "#e4e9eb", stock: true, rating: "4.8", reviews: 47, description: "Kính cường lực kèm khung căn chỉnh, hỗ trợ lắp đặt cân đối tại nhà." },
+  { id: "hoda-full-glue-glass", name: "Kính HODA full keo", brand: "HODA", category: "screen-protector", categoryLabel: "Kính cường lực", price: 290000, badge: "FULL MÀN", storage: "9H · full keo", color: "Trong suốt", compatibility: "Nhiều mẫu iPhone", warranty: "Đổi lỗi lắp đặt", image: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82", bg: "#e7e9e3", stock: true, rating: "4.7", reviews: 36, description: "Kính phủ kín màn hình, giữ độ nhạy cảm ứng và hạn chế bụi lọt cạnh." }
+];
+const allProducts = [...products, ...accessoryProducts];
+
 const state = {
   category: "Tất cả",
   query: "",
+  accessoryCategory: "all",
+  accessorySort: "featured",
   sort: "featured",
   maxPrice: 50000000,
   stockOnly: false,
@@ -242,9 +261,9 @@ function setRepairStatus(message = "", kind = "error") {
 }
 
 function setMainView(view, anchor, updateHistory = true, scroll = true) {
-  const isRepairView = view === "repair";
-  document.querySelectorAll(".shop-view").forEach((section) => { section.hidden = isRepairView; });
-  $("#repairs").hidden = !isRepairView;
+  document.querySelectorAll(".shop-view").forEach((section) => { section.hidden = view !== "shop"; });
+  $("#repairs").hidden = view !== "repair";
+  $("#accessories").hidden = view !== "accessories";
   document.querySelectorAll(".main-nav [data-view-link]").forEach((link) => {
     const active = link.dataset.viewLink === view && link.hash === anchor;
     link.classList.toggle("active", active);
@@ -308,6 +327,39 @@ function filteredProducts() {
   return visible;
 }
 
+const accessoryCategories = [
+  { id: "all", label: "Tất cả phụ kiện" },
+  { id: "power-bank", label: "Sạc dự phòng" },
+  { id: "charger", label: "Dây sạc & củ sạc" },
+  { id: "case", label: "Ốp điện thoại" },
+  { id: "screen-protector", label: "Kính cường lực" }
+];
+
+function renderAccessoryCategories() {
+  $("#accessoryCategories").innerHTML = accessoryCategories.map((category) => `<button class="accessory-category ${state.accessoryCategory === category.id ? "active" : ""}" data-accessory-category="${category.id}" type="button">${category.label}</button>`).join("");
+}
+
+function renderAccessories() {
+  let visible = accessoryProducts.filter((product) => {
+    const text = `${product.name} ${product.brand} ${product.categoryLabel} ${product.compatibility}`.toLocaleLowerCase("vi");
+    return (state.accessoryCategory === "all" || product.category === state.accessoryCategory)
+      && (!state.query || text.includes(state.query.toLocaleLowerCase("vi")))
+      && (!state.favoritesOnly || state.favorites.has(product.id));
+  });
+  if (state.accessorySort === "price-asc") visible.sort((a, b) => a.price - b.price);
+  if (state.accessorySort === "price-desc") visible.sort((a, b) => b.price - a.price);
+  if (state.accessorySort === "name") visible.sort((a, b) => a.name.localeCompare(b.name, "vi"));
+  $("#accessoryProductGrid").innerHTML = visible.map(productCard).join("");
+  $("#accessoryProductGrid").hidden = !visible.length;
+  $("#accessoryEmptyState").hidden = Boolean(visible.length);
+  $("#accessoryResultsCount").textContent = `${visible.length} phụ kiện`;
+  renderIcons();
+}
+
+function findProductById(productId) {
+  return allProducts.find((product) => product.id === productId);
+}
+
 function productCard(product, index) {
   const favorite = state.favorites.has(product.id);
   return `<article class="product-card" style="--product-bg:${product.bg};animation-delay:${Math.min(index, 6) * 45}ms">
@@ -340,11 +392,11 @@ function renderCart() {
   $("#cartEmpty").hidden = state.cart.length > 0;
   $("#cartSummary").hidden = !state.cart.length;
   $("#cartItems").innerHTML = state.cart.map((item) => {
-    const product = products.find((entry) => entry.id === item.id);
+    const product = findProductById(item.id);
     if (!product) return "";
     return `<article class="cart-item"><div class="cart-item-image"><img src="${product.image}" alt="" loading="lazy"></div><div class="cart-item-copy"><h3>${safeText(product.name)}</h3><p>${safeText(product.storage)} · ${safeText(product.color)}</p><div class="quantity-control"><button type="button" data-quantity="${product.id}" data-delta="-1" aria-label="Giảm số lượng">−</button><span>${item.quantity}</span><button type="button" data-quantity="${product.id}" data-delta="1" aria-label="Tăng số lượng">+</button></div></div><div class="cart-item-end"><strong>${money(product.price * item.quantity)}</strong><button class="remove-item" data-remove="${product.id}" type="button" aria-label="Xóa ${safeText(product.name)}"><i data-lucide="trash-2" aria-hidden="true"></i></button></div></article>`;
   }).join("");
-  const subtotal = state.cart.reduce((total, item) => total + (products.find((product) => product.id === item.id)?.price || 0) * item.quantity, 0);
+  const subtotal = state.cart.reduce((total, item) => total + (findProductById(item.id)?.price || 0) * item.quantity, 0);
   const discount = ["SHOP10", "MOBI10"].includes(state.coupon) ? Math.round(subtotal * .1) : 0;
   const shipping = subtotal >= 5000000 ? 0 : 30000;
   $("#subtotalValue").textContent = money(subtotal);
@@ -363,7 +415,7 @@ function setFavorite(productId) {
 }
 
 function addToCart(productId) {
-  const product = products.find((entry) => entry.id === productId);
+  const product = findProductById(productId);
   if (!product?.stock) return showToast("Sản phẩm đang tạm hết hàng.");
   const existing = state.cart.find((item) => item.id === productId);
   if (existing) existing.quantity += 1;
@@ -382,16 +434,20 @@ function setCartOpen(open) {
 }
 
 function openProduct(productId) {
-  const product = products.find((entry) => entry.id === productId);
+  const product = findProductById(productId);
   if (!product) return;
-  $("#productDetail").innerHTML = `<div class="product-detail-layout"><div class="detail-image" style="background:${product.bg}"><img src="${product.image}" alt="${safeText(product.name)}"></div><div class="detail-copy"><p class="eyebrow">${safeText(product.brand)} · CHÍNH HÃNG</p><h2>${safeText(product.name)}</h2><div class="detail-rating">★★★★★ <span>${product.rating} · ${product.reviews} đánh giá</span></div><p class="detail-price">${money(product.price)}</p><p class="detail-description">${safeText(product.description)}</p><div class="detail-specs"><div>Bộ nhớ<strong>${safeText(product.storage)}</strong></div><div>Màu sắc<strong>${safeText(product.color)}</strong></div><div>Màn hình<strong>${safeText(product.screen)}</strong></div><div>Camera<strong>${safeText(product.camera)}</strong></div></div><button class="button button-dark detail-add" data-detail-add="${product.id}" type="button" ${product.stock ? "" : "disabled"}>${product.stock ? "Thêm vào giỏ hàng" : "Tạm hết hàng"}<i data-lucide="arrow-right" aria-hidden="true"></i></button></div></div>`;
+  const specs = product.category
+    ? [["Loại", product.categoryLabel], ["Thông số", product.storage], ["Tương thích", product.compatibility], ["Bảo hành", product.warranty]]
+    : [["Bộ nhớ", product.storage], ["Màu sắc", product.color], ["Màn hình", product.screen], ["Camera", product.camera]];
+  const specMarkup = specs.map(([label, value]) => `<div>${safeText(label)}<strong>${safeText(value)}</strong></div>`).join("");
+  $("#productDetail").innerHTML = `<div class="product-detail-layout"><div class="detail-image" style="background:${product.bg}"><img src="${product.image}" alt="${safeText(product.name)}"></div><div class="detail-copy"><p class="eyebrow">${safeText(product.brand)} · ${product.category ? "PHỤ KIỆN CHÍNH HÃNG" : "CHÍNH HÃNG"}</p><h2>${safeText(product.name)}</h2><div class="detail-rating">★★★★★ <span>${product.rating} · ${product.reviews} đánh giá</span></div><p class="detail-price">${money(product.price)}</p><p class="detail-description">${safeText(product.description)}</p><div class="detail-specs">${specMarkup}</div><button class="button button-dark detail-add" data-detail-add="${product.id}" type="button" ${product.stock ? "" : "disabled"}>${product.stock ? "Thêm vào giỏ hàng" : "Tạm hết hàng"}<i data-lucide="arrow-right" aria-hidden="true"></i></button></div></div>`;
   $("#productDialog").showModal();
   renderIcons();
 }
 
 function openCheckout() {
   if (!state.cart.length) return;
-  const subtotal = state.cart.reduce((total, item) => total + (products.find((product) => product.id === item.id)?.price || 0) * item.quantity, 0);
+  const subtotal = state.cart.reduce((total, item) => total + (findProductById(item.id)?.price || 0) * item.quantity, 0);
   const discount = ["SHOP10", "MOBI10"].includes(state.coupon) ? Math.round(subtotal * .1) : 0;
   const total = subtotal + (subtotal >= 5000000 ? 0 : 30000) - discount;
   $("#checkoutContent").innerHTML = `<div class="checkout-content">
@@ -441,6 +497,10 @@ document.addEventListener("click", (event) => {
     state.category = target.dataset.category;
     renderCategories();
     renderProducts();
+  } else if (target.dataset.accessoryCategory) {
+    state.accessoryCategory = target.dataset.accessoryCategory;
+    renderAccessoryCategories();
+    renderAccessories();
   } else if (target.dataset.favorite) setFavorite(target.dataset.favorite);
   else if (target.dataset.add) addToCart(target.dataset.add);
   else if (target.dataset.detail) openProduct(target.dataset.detail);
@@ -503,7 +563,15 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && $("#cartDrawer").classList.contains("open")) setCartOpen(false);
 });
 
-$("#searchInput").addEventListener("input", (event) => { state.query = event.target.value.trim(); renderProducts(); });
+$("#searchInput").addEventListener("input", (event) => {
+  state.query = event.target.value.trim();
+  renderProducts();
+  renderAccessories();
+});
+$("#accessorySortSelect").addEventListener("change", (event) => {
+  state.accessorySort = event.target.value;
+  renderAccessories();
+});
 $("#repairBrand").addEventListener("change", updateRepairModels);
 $("#repairForm").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -563,18 +631,21 @@ $("#productGrid").addEventListener("error", (event) => {
 }, true);
 
 renderCategories();
+renderAccessoryCategories();
 renderRepairOptions();
 renderProducts();
+renderAccessories();
 renderCart();
 renderAccount();
 renderIcons();
 window.iconLibraryReady?.then(renderIcons);
 if (location.protocol !== "file:") restoreAuthSession();
 const initialAnchor = location.hash.startsWith("#reset_token=") ? "#products" : location.hash || "#products";
-setMainView(initialAnchor === "#repairs" ? "repair" : "shop", initialAnchor, false, false);
+const viewFromAnchor = (anchor) => anchor === "#repairs" ? "repair" : anchor === "#accessories" ? "accessories" : "shop";
+setMainView(viewFromAnchor(initialAnchor), initialAnchor, false, false);
 window.addEventListener("popstate", () => {
   const anchor = location.hash || "#products";
-  setMainView(anchor === "#repairs" ? "repair" : "shop", anchor, false, false);
+  setMainView(viewFromAnchor(anchor), anchor, false, false);
 });
 const resetToken = new URLSearchParams(location.hash.slice(1)).get("reset_token");
 if (resetToken) {
