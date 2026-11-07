@@ -1,49 +1,49 @@
 const products = [
-  { id: "iphone-17-pro", name: "iPhone 17 Pro", brand: "Apple", price: 28990000, oldPrice: 31990000, badge: "BÁN CHẠY", image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=82", bg: "#e9ebdc", storage: "256GB", color: "Titan Sa Mạc", screen: "6.3 inch", camera: "48MP", stock: true, rating: "4.9", reviews: 182, description: "Hiệu năng chuyên nghiệp trong thiết kế titan bền bỉ. Hệ thống camera Pro cho hình ảnh sắc nét trong mọi điều kiện ánh sáng." },
-  { id: "samsung-s26-ultra", name: "Galaxy S26 Ultra", brand: "Samsung", price: 31990000, oldPrice: 33990000, badge: "MỚI VỀ", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=82", bg: "#e4eaf3", storage: "512GB", color: "Titan Xám", screen: "6.9 inch", camera: "200MP", stock: true, rating: "4.8", reviews: 96, description: "Màn hình lớn sống động, camera độ phân giải cao và bút S Pen tích hợp cho công việc lẫn sáng tạo." },
-  { id: "xiaomi-15-ultra", name: "Xiaomi 15 Ultra", brand: "Xiaomi", price: 24990000, oldPrice: 27990000, badge: "-11%", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=82", bg: "#f0e5dc", storage: "512GB", color: "Đen", screen: "6.73 inch", camera: "50MP Leica", stock: true, rating: "4.8", reviews: 74, description: "Chất ảnh Leica giàu cảm xúc cùng hiệu năng flagship trong một thiết kế tinh tế, đậm chất nhiếp ảnh." },
-  { id: "iphone-16", name: "iPhone 16", brand: "Apple", price: 19990000, oldPrice: 21990000, badge: "GIÁ TỐT", image: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82", bg: "#e2efe9", storage: "128GB", color: "Xanh Lưu Ly", screen: "6.1 inch", camera: "48MP", stock: true, rating: "4.9", reviews: 213, description: "Chiếc iPhone cân bằng hoàn hảo cho mỗi ngày, với camera linh hoạt và nút điều khiển tiện dụng." },
-  { id: "pixel-10-pro", name: "Google Pixel 10 Pro", brand: "Google", price: 23990000, oldPrice: null, badge: "ĐỘC QUYỀN", image: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=900&q=82", bg: "#e5e6f4", storage: "256GB", color: "Porcelain", screen: "6.3 inch", camera: "50MP", stock: true, rating: "4.7", reviews: 48, description: "Trải nghiệm Android tinh gọn với những tính năng AI thông minh và camera computational photography." },
-  { id: "samsung-z-flip7", name: "Galaxy Z Flip7", brand: "Samsung", price: 26990000, oldPrice: 28990000, badge: "QUÀ 2 TRIỆU", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=900&q=82", bg: "#f1e4dc", storage: "256GB", color: "Coral Red", screen: "6.9 inch", camera: "50MP", stock: true, rating: "4.8", reviews: 61, description: "Gập gọn phong cách, mở ra không gian sử dụng rộng rãi. Màn hình ngoài linh hoạt cho mọi khoảnh khắc." },
-  { id: "oppo-find-x8", name: "OPPO Find X8 Pro", brand: "OPPO", price: 22990000, oldPrice: 25990000, badge: "-12%", image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=900&q=82", bg: "#e8ebdc", storage: "512GB", color: "Trắng Ngọc", screen: "6.78 inch", camera: "50MP Hasselblad", stock: true, rating: "4.7", reviews: 53, description: "Thiết kế thanh lịch, camera Hasselblad tông màu tự nhiên và pin bền bỉ cho ngày dài năng động." },
-  { id: "redmi-note-15", name: "Redmi Note 15 Pro+", brand: "Xiaomi", price: 11990000, oldPrice: 13990000, badge: "GIÁ TỐT", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=82", bg: "#e8e4f0", storage: "256GB", color: "Tím Khói", screen: "6.67 inch", camera: "200MP", stock: false, rating: "4.6", reviews: 129, description: "Lựa chọn hiệu năng cao trong tầm giá dễ tiếp cận, trang bị màn hình sáng và camera độ phân giải lớn." }
+  { id: "iphone-17-pro", name: "iPhone 17 Pro", brand: "Apple", price: 28990000, oldPrice: 31990000, badge: "BÁN CHẠY", image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg", bg: "#e9ebdc", storage: "256GB", color: "Titan Sa Mạc", screen: "6.3 inch", camera: "48MP", stock: true, rating: "4.9", reviews: 182, description: "Hiệu năng chuyên nghiệp trong thiết kế titan bền bỉ. Hệ thống camera Pro cho hình ảnh sắc nét trong mọi điều kiện ánh sáng." },
+  { id: "samsung-s26-ultra", name: "Galaxy S26 Ultra", brand: "Samsung", price: 31990000, oldPrice: 33990000, badge: "MỚI VỀ", image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s26-ultra-1.jpg", bg: "#e4eaf3", storage: "512GB", color: "Titan Xám", screen: "6.9 inch", camera: "200MP", stock: true, rating: "4.8", reviews: 96, description: "Màn hình lớn sống động, camera độ phân giải cao và bút S Pen tích hợp cho công việc lẫn sáng tạo." },
+  { id: "xiaomi-15-ultra", name: "Xiaomi 15 Ultra", brand: "Xiaomi", price: 24990000, oldPrice: 27990000, badge: "-11%", image: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-15-ultra/pc/8d37a7f2e7af06521ae6b5f32924d141.jpg", bg: "#f0e5dc", storage: "512GB", color: "Đen", screen: "6.73 inch", camera: "50MP Leica", stock: true, rating: "4.8", reviews: 74, description: "Chất ảnh Leica giàu cảm xúc cùng hiệu năng flagship trong một thiết kế tinh tế, đậm chất nhiếp ảnh." },
+  { id: "iphone-16", name: "iPhone 16", brand: "Apple", price: 19990000, oldPrice: 21990000, badge: "GIÁ TỐT", image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-1.jpg", bg: "#e2efe9", storage: "128GB", color: "Xanh Lưu Ly", screen: "6.1 inch", camera: "48MP", stock: true, rating: "4.9", reviews: 213, description: "Chiếc iPhone cân bằng hoàn hảo cho mỗi ngày, với camera linh hoạt và nút điều khiển tiện dụng." },
+  { id: "pixel-10-pro", name: "Google Pixel 10 Pro", brand: "Google", price: 23990000, oldPrice: null, badge: "ĐỘC QUYỀN", image: "https://lh3.googleusercontent.com/cUnl8qDLSpzTlH9_9fIEpNHq8EiVH-JwF-r0FPGha83zS26d0FO4LYUxYDU-k3CO6VDt9pyMOHWXiSvvFcenGccNM5B1L8TVO-2OtA=w1000-rj-sc0xffffffff", bg: "#e5e6f4", storage: "256GB", color: "Porcelain", screen: "6.3 inch", camera: "50MP", stock: true, rating: "4.7", reviews: 48, description: "Trải nghiệm Android tinh gọn với những tính năng AI thông minh và camera computational photography." },
+  { id: "samsung-z-flip7", name: "Galaxy Z Flip7", brand: "Samsung", price: 26990000, oldPrice: 28990000, badge: "QUÀ 2 TRIỆU", image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip7-1.jpg", bg: "#f1e4dc", storage: "256GB", color: "Coral Red", screen: "6.9 inch", camera: "50MP", stock: true, rating: "4.8", reviews: 61, description: "Gập gọn phong cách, mở ra không gian sử dụng rộng rãi. Màn hình ngoài linh hoạt cho mọi khoảnh khắc." },
+  { id: "oppo-find-x8", name: "OPPO Find X8 Pro", brand: "OPPO", price: 22990000, oldPrice: 25990000, badge: "-12%", image: "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-find-x8-1.jpg", bg: "#e8ebdc", storage: "512GB", color: "Trắng Ngọc", screen: "6.78 inch", camera: "50MP Hasselblad", stock: true, rating: "4.7", reviews: 53, description: "Thiết kế thanh lịch, camera Hasselblad tông màu tự nhiên và pin bền bỉ cho ngày dài năng động." },
+  { id: "redmi-note-15", name: "Redmi Note 15 Pro", brand: "Xiaomi", price: 11990000, oldPrice: 13990000, badge: "GIÁ TỐT", image: "https://i02.appmifile.com/mi-com-product/fly-birds/redmi-note-15-pro/pc/a4fb3c11e4a0448530992d0846532e87.jpg", bg: "#e8e4f0", storage: "256GB", color: "Tím Khói", screen: "6.67 inch", camera: "200MP", stock: false, rating: "4.6", reviews: 129, description: "Lựa chọn hiệu năng cao trong tầm giá dễ tiếp cận, trang bị màn hình sáng và camera độ phân giải lớn." }
 ];
 
 const addedModels = [
-  { id: "oneplus-13", name: "OnePlus 13", brand: "OnePlus", price: 24990000, storage: "512GB", color: "Đen Vũ Trụ", screen: "6.82 inch", camera: "50MP Hasselblad" },
-  { id: "oneplus-13r", name: "OnePlus 13R", brand: "OnePlus", price: 16990000, storage: "256GB", color: "Đen", screen: "6.78 inch", camera: "50MP" },
-  { id: "oneplus-nord-5", name: "OnePlus Nord 5", brand: "OnePlus", price: 12990000, storage: "256GB", color: "Xám", screen: "6.83 inch", camera: "50MP" },
-  { id: "oneplus-nord-ce5", name: "OnePlus Nord CE5", brand: "OnePlus", price: 8990000, storage: "256GB", color: "Đen", screen: "6.77 inch", camera: "50MP" },
-  { id: "oneplus-open", name: "OnePlus Open", brand: "OnePlus", price: 32990000, storage: "512GB", color: "Đen Ngọc", screen: "7.82 inch gập", camera: "48MP Hasselblad" },
-  { id: "vivo-x200-pro", name: "vivo X200 Pro", brand: "Vivo", price: 29990000, storage: "512GB", color: "Xanh Titan", screen: "6.78 inch", camera: "50MP ZEISS" },
-  { id: "vivo-x200", name: "vivo X200", brand: "Vivo", price: 21990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "50MP ZEISS" },
-  { id: "vivo-v50", name: "vivo V50", brand: "Vivo", price: 13990000, storage: "256GB", color: "Hồng Mộng Mơ", screen: "6.77 inch", camera: "50MP ZEISS" },
-  { id: "vivo-y300-pro", name: "vivo Y300 Pro", brand: "Vivo", price: 9990000, storage: "256GB", color: "Titan Bạc", screen: "6.77 inch", camera: "50MP" },
-  { id: "vivo-y300", name: "vivo Y300", brand: "Vivo", price: 7490000, storage: "128GB", color: "Xanh Đại Dương", screen: "6.67 inch", camera: "50MP" },
-  { id: "tecno-camon-40-premier", name: "TECNO Camon 40 Premier 5G", brand: "Tecno", price: 10990000, storage: "512GB", color: "Đen", screen: "6.67 inch", camera: "50MP Sony" },
-  { id: "tecno-camon-40-pro", name: "TECNO Camon 40 Pro 5G", brand: "Tecno", price: 8490000, storage: "256GB", color: "Xanh Ngọc", screen: "6.78 inch", camera: "50MP" },
-  { id: "tecno-pova-7-ultra", name: "TECNO Pova 7 Ultra 5G", brand: "Tecno", price: 7990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "108MP" },
-  { id: "tecno-spark-40-pro-plus", name: "TECNO Spark 40 Pro+", brand: "Tecno", price: 5990000, storage: "256GB", color: "Trắng Ngọc", screen: "6.78 inch", camera: "50MP" },
-  { id: "tecno-phantom-v-fold2", name: "TECNO Phantom V Fold2", brand: "Tecno", price: 24990000, storage: "512GB", color: "Xám", screen: "7.85 inch gập", camera: "50MP" },
-  { id: "honor-magic7-pro", name: "HONOR Magic7 Pro", brand: "Honor", price: 26990000, storage: "512GB", color: "Đen", screen: "6.8 inch", camera: "50MP AI Falcon" },
-  { id: "honor-magic-v3", name: "HONOR Magic V3", brand: "Honor", price: 32990000, storage: "512GB", color: "Xanh Lá", screen: "7.92 inch gập", camera: "50MP" },
-  { id: "honor-400-pro", name: "HONOR 400 Pro", brand: "Honor", price: 17990000, storage: "512GB", color: "Đen Nguyệt Thực", screen: "6.7 inch", camera: "200MP AI" },
-  { id: "honor-x9c", name: "HONOR X9c", brand: "Honor", price: 8490000, storage: "256GB", color: "Tím", screen: "6.78 inch", camera: "108MP" },
-  { id: "honor-x8c", name: "HONOR X8c", brand: "Honor", price: 6990000, storage: "256GB", color: "Xanh Mây", screen: "6.7 inch", camera: "108MP" }
+  { id: "samsung-galaxy-a56", name: "Galaxy A56 5G", brand: "Samsung", price: 10490000, storage: "256GB", color: "Xám Graphite", screen: "6.7 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a56-1.jpg" },
+  { id: "samsung-galaxy-z-fold7", name: "Galaxy Z Fold7", brand: "Samsung", price: 46990000, storage: "512GB", color: "Đen Jet", screen: "8.0 inch gập", camera: "200MP", image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-fold7-1.jpg" },
+  { id: "redmi-turbo-4-pro", name: "REDMI Turbo 4 Pro", brand: "Xiaomi", price: 9990000, storage: "256GB", color: "Đen", screen: "6.83 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-turbo-4-pro-1.jpg" },
+  { id: "poco-f7-pro", name: "POCO F7 Pro", brand: "Xiaomi", price: 13990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "50MP OIS", image: "https://i02.appmifile.com/mi-com-product/fly-birds/poco-f7-pro/pc/1e7c743971c5d34b1d27e82b5c070da1.jpg?f=webp" },
+  { id: "oppo-a5-pro-5g", name: "OPPO A5 Pro 5G", brand: "OPPO", price: 8990000, storage: "256GB", color: "Nâu Mocha", screen: "6.67 inch", camera: "50MP", image: "https://www.oppo.com/content/dam/oppo/product-asset-library/a/a5-pro-5g/en/pink-brown-tw/v1/assets/images-kv-homepage-black-mob-1.png.webp" },
+  { id: "oppo-k13-turbo", name: "OPPO K13 Turbo", brand: "OPPO", price: 10990000, storage: "256GB", color: "Tím", screen: "6.8 inch", camera: "50MP", image: "https://www.oppo.com/content/dam/oppo_com/oppo/product-asset-library/series-k/k13-turbo-series/k13-turbo/v1/images/pad/kv.png.avif" },
+  { id: "oppo-find-n5", name: "OPPO Find N5", brand: "OPPO", price: 44990000, storage: "512GB", color: "Đen Cosmic", screen: "8.12 inch gập", camera: "50MP Hasselblad", image: "https://www.oppo.com/content/dam/oppo/product-asset-library/find/find-n5-series/main/assets/images-kv-bg-pad-1.jpg.avif" },
+  { id: "oneplus-13", name: "OnePlus 13", brand: "OnePlus", price: 24990000, storage: "512GB", color: "Đen Vũ Trụ", screen: "6.82 inch", camera: "50MP Hasselblad", image: "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-13-1.jpg" },
+  { id: "oneplus-13r", name: "OnePlus 13R", brand: "OnePlus", price: 16990000, storage: "256GB", color: "Đen", screen: "6.78 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-13r-1.jpg" },
+  { id: "oneplus-nord-5", name: "OnePlus Nord 5", brand: "OnePlus", price: 12990000, storage: "256GB", color: "Xám", screen: "6.83 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-nord5-1.jpg" },
+  { id: "oneplus-nord-ce5", name: "OnePlus Nord CE5", brand: "OnePlus", price: 8990000, storage: "256GB", color: "Đen", screen: "6.77 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-nord-ce5-1.jpg" },
+  { id: "oneplus-open", name: "OnePlus Open", brand: "OnePlus", price: 32990000, storage: "512GB", color: "Đen Ngọc", screen: "7.82 inch gập", camera: "48MP Hasselblad", image: "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-open-2.jpg" },
+  { id: "vivo-x200-pro", name: "vivo X200 Pro", brand: "Vivo", price: 29990000, storage: "512GB", color: "Xanh Titan", screen: "6.78 inch", camera: "50MP ZEISS", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x200-pro-1.jpg" },
+  { id: "vivo-x200", name: "vivo X200", brand: "Vivo", price: 21990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "50MP ZEISS", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x200-1.jpg" },
+  { id: "vivo-v50", name: "vivo V50", brand: "Vivo", price: 13990000, storage: "256GB", color: "Hồng Mộng Mơ", screen: "6.77 inch", camera: "50MP ZEISS", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-v50-1.jpg" },
+  { id: "vivo-y300-pro", name: "vivo Y300 Pro", brand: "Vivo", price: 9990000, storage: "256GB", color: "Titan Bạc", screen: "6.77 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-y300-pro-1.jpg" },
+  { id: "vivo-y300", name: "vivo Y300", brand: "Vivo", price: 7490000, storage: "128GB", color: "Xanh Đại Dương", screen: "6.67 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-y300-5g-1.jpg" },
+  { id: "tecno-camon-40-premier", name: "TECNO Camon 40 Premier 5G", brand: "Tecno", price: 10990000, storage: "512GB", color: "Đen", screen: "6.67 inch", camera: "50MP Sony", image: "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-camon-40-premier-1.jpg" },
+  { id: "tecno-camon-40-pro", name: "TECNO Camon 40 Pro 5G", brand: "Tecno", price: 8490000, storage: "256GB", color: "Xanh Ngọc", screen: "6.78 inch", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-camon-40-pro-5g-1.jpg" },
+  { id: "tecno-pova-7-ultra", name: "TECNO Pova 7 Ultra 5G", brand: "Tecno", price: 7990000, storage: "256GB", color: "Đen", screen: "6.67 inch", camera: "108MP", image: "https://d13pvy8xd75yde.cloudfront.net/phones/pova7ultra5g_lj9/en/assets/images-kv-9-phone-mo-1.jpg.webp" },
+  { id: "tecno-spark-40-pro-plus", name: "TECNO Spark 40 Pro", brand: "Tecno", price: 5990000, storage: "256GB", color: "Trắng Ngọc", screen: "6.78 inch", camera: "50MP", image: "https://d13pvy8xd75yde.cloudfront.net/global/phones/spark-40-pro/assets/images-kv-6-phone-mo-1.jpg.webp" },
+  { id: "tecno-phantom-v-fold2", name: "TECNO Phantom V Fold2", brand: "Tecno", price: 24990000, storage: "512GB", color: "Xám", screen: "7.85 inch gập", camera: "50MP", image: "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-phantom-v-fold2-1.jpg" },
+  { id: "honor-magic7-pro", name: "HONOR Magic7 Pro", brand: "Honor", price: 26990000, storage: "512GB", color: "Đen", screen: "6.8 inch", camera: "50MP AI Falcon", image: "https://fdn2.gsmarena.com/vv/pics/honor/honor-magic7-pro-1.jpg" },
+  { id: "honor-magic-v3", name: "HONOR Magic V3", brand: "Honor", price: 32990000, storage: "512GB", color: "Xanh Lá", screen: "7.92 inch gập", camera: "50MP", image: "https://www.honor.com/content/dam/honor/global/product-list/smartphone/honor-magic-v3/honor-magic-v3-list-green.png" },
+  { id: "honor-400-pro", name: "HONOR 400 Pro", brand: "Honor", price: 17990000, storage: "512GB", color: "Đen Nguyệt Thực", screen: "6.7 inch", camera: "200MP AI", image: "https://fdn2.gsmarena.com/vv/pics/honor/honor-400-pro-1.jpg" },
+  { id: "honor-x9c", name: "HONOR X9c", brand: "Honor", price: 8490000, storage: "256GB", color: "Tím", screen: "6.78 inch", camera: "108MP", image: "https://fdn2.gsmarena.com/vv/pics/honor/honor-x9c-1.jpg" },
+  { id: "honor-x8c", name: "HONOR X8c", brand: "Honor", price: 6990000, storage: "256GB", color: "Xanh Mây", screen: "6.7 inch", camera: "108MP", image: "https://fdn2.gsmarena.com/vv/pics/honor/honor-x8c-1.jpg" }
 ];
 
-const addedProductImages = {
-  OnePlus: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=82",
-  Vivo: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=82",
-  Tecno: "https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=82",
-  Honor: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=82"
-};
 const addedProductBackgrounds = { OnePlus: "#e6eadb", Vivo: "#dfe9ef", Tecno: "#efe7dc", Honor: "#e9e3ed" };
 products.push(...addedModels.map((product, index) => ({
   ...product,
   oldPrice: null,
   badge: index % 5 === 0 ? "MỚI VỀ" : "CHÍNH HÃNG",
-  image: addedProductImages[product.brand],
   bg: addedProductBackgrounds[product.brand],
   stock: true,
   rating: "4.7",
@@ -70,6 +70,7 @@ const allProducts = [...products, ...accessoryProducts];
 
 const state = {
   category: "Tất cả",
+  seriesByBrand: {},
   query: "",
   accessoryCategory: "all",
   accessorySort: "featured",
@@ -87,6 +88,23 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const money = (amount) => new Intl.NumberFormat("vi-VN").format(amount) + "₫";
 const safeText = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
 let toastTimer;
+
+function phoneSeries(product) {
+  if (product.brand === "Samsung") return product.name.match(/Galaxy [A-Z]/)?.[0] || "Galaxy";
+  if (product.brand === "Apple") return "iPhone";
+  if (product.brand === "Xiaomi") return /POCO/i.test(product.name) ? "POCO" : /Turbo/i.test(product.name) ? "Turbo" : /Redmi/i.test(product.name) ? "Redmi" : "Xiaomi";
+  if (product.brand === "Google") return "Pixel";
+  if (product.brand === "OPPO") return product.name.match(/OPPO (Find [NX]|[AK])/i)?.[1] || "Find X";
+  if (product.brand === "OnePlus") return /Nord/i.test(product.name) ? "Nord" : /Open/i.test(product.name) ? "Open" : "OnePlus";
+  if (product.brand === "Vivo") return product.name.match(/vivo ([A-Z])/i)?.[1].toUpperCase() || "Khác";
+  if (product.brand === "Tecno") return product.name.match(/TECNO ([A-Za-z]+)/i)?.[1] || "Khác";
+  if (product.brand === "Honor") return product.name.match(/HONOR (Magic|X)/i)?.[1] || "Khác";
+  return product.brand;
+}
+
+function phoneBrandTitle(brand) {
+  return ({ Apple: "iPhone", Samsung: "Samsung Galaxy", Google: "Google Pixel", Vivo: "vivo", Tecno: "TECNO", Honor: "HONOR" })[brand] || brand;
+}
 
 function renderIcons() {
   if (window.lucide) window.lucide.createIcons();
@@ -264,6 +282,7 @@ function setMainView(view, anchor, updateHistory = true, scroll = true) {
   document.querySelectorAll(".shop-view").forEach((section) => { section.hidden = view !== "shop"; });
   $("#repairs").hidden = view !== "repair";
   $("#accessories").hidden = view !== "accessories";
+  $("#tradein").hidden = view !== "used";
   document.querySelectorAll(".main-nav [data-view-link]").forEach((link) => {
     const active = link.dataset.viewLink === view && link.hash === anchor;
     link.classList.toggle("active", active);
@@ -317,6 +336,7 @@ function filteredProducts() {
     const text = `${product.name} ${product.brand} ${product.storage}`.toLocaleLowerCase("vi");
     return (state.category === "Tất cả" || product.brand === state.category)
       && (!state.query || text.includes(state.query.toLocaleLowerCase("vi")))
+      && (!state.seriesByBrand[product.brand] || phoneSeries(product) === state.seriesByBrand[product.brand])
       && product.price <= state.maxPrice
       && (!state.stockOnly || product.stock)
       && (!state.favoritesOnly || state.favorites.has(product.id));
@@ -375,7 +395,21 @@ function productCard(product, index) {
 
 function renderProducts() {
   const visible = filteredProducts();
-  $("#productGrid").innerHTML = visible.map(productCard).join("");
+  const productsByBrand = new Map();
+  visible.forEach((product) => {
+    if (!productsByBrand.has(product.brand)) productsByBrand.set(product.brand, []);
+    productsByBrand.get(product.brand).push(product);
+  });
+  $("#productGrid").innerHTML = [...productsByBrand.entries()].map(([brand, brandProducts], index) => {
+    const series = [...new Set(products.filter((product) => product.brand === brand).map(phoneSeries))];
+    return `<section class="brand-product-group" aria-labelledby="brandGroupTitle${index}">
+      <div class="brand-product-heading"><h3 id="brandGroupTitle${index}">Điện thoại ${safeText(phoneBrandTitle(brand))}</h3></div>
+      <div class="brand-series-list" role="group" aria-label="Dòng điện thoại ${safeText(brand)}">
+        ${series.map((item) => `<button class="brand-series-button ${state.seriesByBrand[brand] === item ? "active" : ""}" type="button" data-brand-series="${safeText(brand)}" data-series="${safeText(item)}" aria-pressed="${state.seriesByBrand[brand] === item}">${safeText(item)}</button>`).join("")}
+      </div>
+      <div class="product-grid brand-product-grid">${brandProducts.map(productCard).join("")}</div>
+    </section>`;
+  }).join("");
   $("#productGrid").hidden = !visible.length;
   $("#emptyState").hidden = Boolean(visible.length);
   $("#resultsCount").textContent = `${visible.length} sản phẩm`;
@@ -467,6 +501,7 @@ function openCheckout() {
 
 function resetFilters() {
   state.category = "Tất cả";
+  state.seriesByBrand = {};
   state.query = "";
   state.maxPrice = 50000000;
   state.stockOnly = false;
@@ -486,6 +521,13 @@ document.addEventListener("click", (event) => {
     setMainView(viewLink.dataset.viewLink, viewLink.hash);
     return;
   }
+  const authLink = event.target.closest("[data-auth-link]");
+  if (authLink) {
+    event.preventDefault();
+    openAuthDialog();
+    setAuthView("register");
+    return;
+  }
   if (event.target.closest(".site-header .brand")) {
     event.preventDefault();
     setMainView("shop", "#top");
@@ -493,8 +535,14 @@ document.addEventListener("click", (event) => {
   }
   const target = event.target.closest("button, [data-detail]");
   if (!target) return;
-  if (target.dataset.category) {
+  if (target.dataset.brandSeries) {
+    const { brandSeries, series } = target.dataset;
+    if (state.seriesByBrand[brandSeries] === series) delete state.seriesByBrand[brandSeries];
+    else state.seriesByBrand[brandSeries] = series;
+    renderProducts();
+  } else if (target.dataset.category) {
     state.category = target.dataset.category;
+    state.seriesByBrand = {};
     renderCategories();
     renderProducts();
   } else if (target.dataset.accessoryCategory) {
@@ -520,7 +568,10 @@ document.addEventListener("click", (event) => {
   else if (target.id === "openCart") setCartOpen(true);
   else if (target.id === "closeCart" || target.id === "continueShopping") setCartOpen(false);
   else if (target.id === "accountButton") openAuthDialog();
-  else if (target.id === "closeAuth") $("#authDialog").close();
+  else if (target.id === "registerShortcut") {
+    openAuthDialog();
+    setAuthView("register");
+  } else if (target.id === "closeAuth") $("#authDialog").close();
   else if (target.dataset.authTab) setAuthView(target.dataset.authTab);
   else if (target.dataset.authView) setAuthView(target.dataset.authView);
   else if (target.dataset.passwordToggle) {
@@ -542,6 +593,7 @@ document.addEventListener("click", (event) => {
   } else if (target.id === "showFavorites" || target.id === "favoritesShortcut") {
     state.favoritesOnly = !state.favoritesOnly;
     state.category = "Tất cả";
+    state.seriesByBrand = {};
     setMainView("shop", "#products");
     renderCategories();
     renderProducts();
@@ -641,7 +693,12 @@ renderIcons();
 window.iconLibraryReady?.then(renderIcons);
 if (location.protocol !== "file:") restoreAuthSession();
 const initialAnchor = location.hash.startsWith("#reset_token=") ? "#products" : location.hash || "#products";
-const viewFromAnchor = (anchor) => anchor === "#repairs" ? "repair" : anchor === "#accessories" ? "accessories" : "shop";
+const viewFromAnchor = (anchor) => {
+  if (anchor === "#repairs") return "repair";
+  if (anchor === "#accessories") return "accessories";
+  if (anchor === "#tradein") return "used";
+  return "shop";
+};
 setMainView(viewFromAnchor(initialAnchor), initialAnchor, false, false);
 window.addEventListener("popstate", () => {
   const anchor = location.hash || "#products";
