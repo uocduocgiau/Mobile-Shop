@@ -89,6 +89,39 @@
       <div class="trust-item"><span class="trust-icon"><i data-lucide="credit-card" aria-hidden="true"></i></span><div><strong>Trả góp 0%</strong><small>Thủ tục nhanh, duyệt dễ dàng</small></div></div>
     </section>
 
+    <section class="repair-section" id="repairs" aria-labelledby="repairTitle">
+      <div class="repair-heading">
+        <div><p class="eyebrow">TRUNG TÂM DỊCH VỤ MOBILE SHOP</p><h2 id="repairTitle">Sửa đúng bệnh.<br><span>An tâm dùng tiếp.</span></h2></div>
+        <p>Kiểm tra tình trạng máy, báo giá trước khi sửa và chỉ tiến hành khi bạn đồng ý.</p>
+      </div>
+      <div class="repair-layout">
+        <div class="repair-service-list" aria-label="Chọn hạng mục sửa chữa">
+          <button class="repair-service active" type="button" data-repair-type="battery"><span class="repair-service-icon"><i data-lucide="battery-medium" aria-hidden="true"></i></span><span><strong>Thay pin</strong><small>Pin chai, tụt nhanh, sập nguồn</small></span><span class="repair-estimate">Từ 490.000₫</span></button>
+          <button class="repair-service" type="button" data-repair-type="screen"><span class="repair-service-icon"><i data-lucide="smartphone" aria-hidden="true"></i></span><span><strong>Thay màn hình</strong><small>Nứt vỡ, sọc, liệt cảm ứng</small></span><span class="repair-estimate">Từ 890.000₫</span></button>
+          <button class="repair-service" type="button" data-repair-type="back-glass"><span class="repair-service-icon"><i data-lucide="panels-top-left" aria-hidden="true"></i></span><span><strong>Thay vỏ / kính lưng</strong><small>Móp, nứt, trầy xước nặng</small></span><span class="repair-estimate">Từ 390.000₫</span></button>
+          <button class="repair-service" type="button" data-repair-type="camera"><span class="repair-service-icon"><i data-lucide="camera" aria-hidden="true"></i></span><span><strong>Sửa camera</strong><small>Mờ, rung, không lấy nét</small></span><span class="repair-estimate">Từ 390.000₫</span></button>
+          <button class="repair-service" type="button" data-repair-type="mainboard"><span class="repair-service-icon"><i data-lucide="cpu" aria-hidden="true"></i></span><span><strong>Sửa main</strong><small>Mất nguồn, lỗi sạc, mất sóng</small></span><span class="repair-estimate">Kiểm tra máy</span></button>
+          <p class="repair-disclaimer">Giá tham khảo; kỹ thuật viên xác nhận chi phí sau khi kiểm tra máy.</p>
+        </div>
+        <form class="repair-form" id="repairForm">
+          <div class="repair-form-heading"><div><p class="eyebrow">ĐẶT LỊCH KIỂM TRA</p><h3>Để lại thông tin</h3></div><span class="repair-form-mark"><i data-lucide="calendar-check-2" aria-hidden="true"></i></span></div>
+          <div class="repair-fields">
+            <label class="repair-field">Họ và tên<input name="name" autocomplete="name" required minlength="2" placeholder="Tên của bạn"></label>
+            <label class="repair-field">Số điện thoại<input name="phone" type="tel" autocomplete="tel" pattern="[0-9+ ()-]{9,15}" required placeholder="09xx xxx xxx"></label>
+            <label class="repair-field">Hãng điện thoại<select name="brand" id="repairBrand" required></select></label>
+            <label class="repair-field">Model<input name="model" list="repairModels" id="repairModel" required maxlength="100" placeholder="Ví dụ: OnePlus 13"><datalist id="repairModels"></datalist></label>
+            <label class="repair-field">Hạng mục<select name="repair_type" id="repairType" required><option value="battery">Thay pin</option><option value="screen">Thay màn hình</option><option value="back-glass">Thay vỏ / kính lưng</option><option value="camera">Sửa camera</option><option value="mainboard">Sửa main</option></select></label>
+            <label class="repair-field">Ngày mong muốn<input name="preferred_date" id="repairDate" type="date" required></label>
+            <label class="repair-field repair-field-wide">Cửa hàng<select name="branch" required><option value="Mobile Shop - Hà Nội">Mobile Shop - Hà Nội</option><option value="Mobile Shop - TP. Hồ Chí Minh">Mobile Shop - TP. Hồ Chí Minh</option><option value="Mobile Shop - Đà Nẵng">Mobile Shop - Đà Nẵng</option></select></label>
+            <label class="repair-field repair-field-wide">Mô tả tình trạng<textarea name="note" maxlength="500" placeholder="Mô tả lỗi máy để kỹ thuật viên chuẩn bị tốt hơn"></textarea></label>
+          </div>
+          <p class="repair-status" id="repairStatus" role="status" aria-live="polite"></p>
+          <button class="button button-dark repair-submit" type="submit">Đặt lịch sửa chữa <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+          <p class="repair-privacy"><i data-lucide="shield-check" aria-hidden="true"></i> Nhân viên chỉ dùng thông tin để xác nhận lịch hẹn.</p>
+        </form>
+      </div>
+    </section>
+
     <section class="catalog-section" id="products">
       <div class="section-heading">
         <div><p class="eyebrow">CHỌN THEO CÁCH CỦA BẠN</p><h2>Điện thoại nổi bật<span class="heading-period">.</span></h2></div>
@@ -121,39 +154,6 @@
           <div class="product-grid" id="productGrid" aria-live="polite"></div>
           <div class="empty-state" id="emptyState" hidden><span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span><h3>Chưa tìm thấy sản phẩm phù hợp</h3><p>Thử đổi từ khóa hoặc xóa bớt bộ lọc nhé.</p><button class="button button-dark" id="emptyReset" type="button">Xem tất cả sản phẩm</button></div>
         </div>
-      </div>
-    </section>
-
-    <section class="repair-section" id="repairs" aria-labelledby="repairTitle">
-      <div class="repair-heading">
-        <div><p class="eyebrow">TRUNG TÂM DỊCH VỤ MOBILE SHOP</p><h2 id="repairTitle">Sửa đúng bệnh.<br><span>An tâm dùng tiếp.</span></h2></div>
-        <p>Kiểm tra tình trạng máy, báo giá trước khi sửa và chỉ tiến hành khi bạn đồng ý.</p>
-      </div>
-      <div class="repair-layout">
-        <div class="repair-service-list" aria-label="Chọn hạng mục sửa chữa">
-          <button class="repair-service active" type="button" data-repair-type="battery"><span class="repair-service-icon"><i data-lucide="battery-medium" aria-hidden="true"></i></span><span><strong>Thay pin</strong><small>Pin chai, tụt nhanh, sập nguồn</small></span><span class="repair-estimate">Từ 490.000₫</span></button>
-          <button class="repair-service" type="button" data-repair-type="screen"><span class="repair-service-icon"><i data-lucide="smartphone" aria-hidden="true"></i></span><span><strong>Thay màn hình</strong><small>Nứt vỡ, sọc, liệt cảm ứng</small></span><span class="repair-estimate">Từ 890.000₫</span></button>
-          <button class="repair-service" type="button" data-repair-type="back-glass"><span class="repair-service-icon"><i data-lucide="panels-top-left" aria-hidden="true"></i></span><span><strong>Thay vỏ / kính lưng</strong><small>Móp, nứt, trầy xước nặng</small></span><span class="repair-estimate">Từ 390.000₫</span></button>
-          <button class="repair-service" type="button" data-repair-type="camera"><span class="repair-service-icon"><i data-lucide="camera" aria-hidden="true"></i></span><span><strong>Sửa camera</strong><small>Mờ, rung, không lấy nét</small></span><span class="repair-estimate">Từ 390.000₫</span></button>
-          <button class="repair-service" type="button" data-repair-type="mainboard"><span class="repair-service-icon"><i data-lucide="cpu" aria-hidden="true"></i></span><span><strong>Sửa main</strong><small>Mất nguồn, lỗi sạc, mất sóng</small></span><span class="repair-estimate">Kiểm tra máy</span></button>
-          <p class="repair-disclaimer">Giá tham khảo; kỹ thuật viên xác nhận chi phí sau khi kiểm tra máy.</p>
-        </div>
-        <form class="repair-form" id="repairForm">
-          <div class="repair-form-heading"><div><p class="eyebrow">ĐẶT LỊCH KIỂM TRA</p><h3>Để lại thông tin</h3></div><span class="repair-form-mark"><i data-lucide="calendar-check-2" aria-hidden="true"></i></span></div>
-          <div class="repair-fields">
-            <label class="repair-field">Họ và tên<input name="name" autocomplete="name" required minlength="2" placeholder="Tên của bạn"></label>
-            <label class="repair-field">Số điện thoại<input name="phone" type="tel" autocomplete="tel" pattern="[0-9+ ()-]{9,15}" required placeholder="09xx xxx xxx"></label>
-            <label class="repair-field">Hãng điện thoại<select name="brand" id="repairBrand" required></select></label>
-            <label class="repair-field">Model<input name="model" list="repairModels" id="repairModel" required maxlength="100" placeholder="Ví dụ: OnePlus 13"><datalist id="repairModels"></datalist></label>
-            <label class="repair-field">Hạng mục<select name="repair_type" id="repairType" required><option value="battery">Thay pin</option><option value="screen">Thay màn hình</option><option value="back-glass">Thay vỏ / kính lưng</option><option value="camera">Sửa camera</option><option value="mainboard">Sửa main</option></select></label>
-            <label class="repair-field">Ngày mong muốn<input name="preferred_date" id="repairDate" type="date" required></label>
-            <label class="repair-field repair-field-wide">Cửa hàng<select name="branch" required><option value="Mobile Shop - Hà Nội">Mobile Shop - Hà Nội</option><option value="Mobile Shop - TP. Hồ Chí Minh">Mobile Shop - TP. Hồ Chí Minh</option><option value="Mobile Shop - Đà Nẵng">Mobile Shop - Đà Nẵng</option></select></label>
-            <label class="repair-field repair-field-wide">Mô tả tình trạng<textarea name="note" maxlength="500" placeholder="Mô tả lỗi máy để kỹ thuật viên chuẩn bị tốt hơn"></textarea></label>
-          </div>
-          <p class="repair-status" id="repairStatus" role="status" aria-live="polite"></p>
-          <button class="button button-dark repair-submit" type="submit">Đặt lịch sửa chữa <i data-lucide="arrow-right" aria-hidden="true"></i></button>
-          <p class="repair-privacy"><i data-lucide="shield-check" aria-hidden="true"></i> Nhân viên chỉ dùng thông tin để xác nhận lịch hẹn.</p>
-        </form>
       </div>
     </section>
 
