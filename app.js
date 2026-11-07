@@ -53,7 +53,8 @@ async function authRequest(action, payload) {
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
     if (response.status === 0 || response.status === 404) throw new Error("Website chưa cấu hình API tài khoản.");
-    throw new Error(result.message || "Không thể xử lý yêu cầu. Vui lòng thử lại.");
+    const detail = typeof result.detail === "string" ? result.detail : "";
+    throw new Error(result.message || detail || "Không thể xử lý yêu cầu. Vui lòng thử lại.");
   }
   return result;
 }
@@ -81,14 +82,16 @@ function setAuthView(view) {
     login: ["Đăng nhập", "Đăng nhập để theo dõi đơn hàng và nhận ưu đãi riêng."],
     register: ["Tạo tài khoản", "Tham gia Mobi House để trải nghiệm mua sắm thuận tiện hơn."],
     forgot: ["Đặt lại mật khẩu", "Nhập email, chúng tôi sẽ gửi hướng dẫn nếu tài khoản tồn tại."],
+    reset: ["Tạo mật khẩu mới", "Chọn mật khẩu mới có ít nhất 8 ký tự."],
     account: ["Tài khoản của bạn", "Thông tin tài khoản đang đăng nhập."]
   };
   $("#authTitle").textContent = views[view][0];
   $("#authDescription").textContent = views[view][1];
-  $("#authTabs").hidden = view === "forgot" || view === "account";
+  $("#authTabs").hidden = view === "forgot" || view === "reset" || view === "account";
   $("[data-auth-panel='login']").hidden = view !== "login";
   $("[data-auth-panel='register']").hidden = view !== "register";
   $("[data-auth-panel='forgot']").hidden = view !== "forgot";
+  $("[data-auth-panel='reset']").hidden = view !== "reset";
   $("[data-auth-panel='account']").hidden = view !== "account";
   document.querySelectorAll(".auth-password input").forEach((input) => {
     input.value = "";
@@ -137,6 +140,12 @@ async function submitAuthForm(form) {
       state.user = result.user || { name: formData.get("name").trim(), email: formData.get("email").trim() };
       renderAccount();
       setAuthView("account");
+    } else if (form.id === "authResetForm") {
+      const password = formData.get("password");
+      if (password !== formData.get("confirmPassword")) throw new Error("Hai mật khẩu chưa trùng khớp.");
+      await authRequest("reset-password", { token: formData.get("token"), password });
+      setAuthView("login");
+      setAuthStatus("Mật khẩu đã cập nhật. Hãy đăng nhập bằng mật khẩu mới.", "success");
     } else {
       await authRequest("forgot-password", { email: formData.get("email").trim() });
       setAuthStatus("Nếu email có tài khoản, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư.", "success");
@@ -362,7 +371,7 @@ document.addEventListener("keydown", (event) => {
 
 $("#searchInput").addEventListener("input", (event) => { state.query = event.target.value.trim(); renderProducts(); });
 $("#authContent").addEventListener("submit", (event) => {
-  if (!["authLoginForm", "authRegisterForm", "authForgotForm"].includes(event.target.id)) return;
+  if (!["authLoginForm", "authRegisterForm", "authForgotForm", "authResetForm"].includes(event.target.id)) return;
   event.preventDefault();
   submitAuthForm(event.target);
 });
@@ -426,4 +435,12 @@ renderProducts();
 renderCart();
 renderAccount();
 renderIcons();
+window.iconLibraryReady?.then(renderIcons);
 if (location.protocol !== "file:") restoreAuthSession();
+const resetToken = new URLSearchParams(location.hash.slice(1)).get("reset_token");
+if (resetToken) {
+  $("#authResetToken").value = resetToken;
+  setAuthView("reset");
+  $("#authDialog").showModal();
+  history.replaceState(null, "", location.pathname);
+}

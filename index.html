@@ -4,13 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f7f2">
+  <meta name="referrer" content="no-referrer">
   <meta name="description" content="Mua điện thoại chính hãng, giá tốt, giao nhanh toàn quốc tại Mobi House.">
   <title>Mobi House - Điện thoại chính hãng, giá tốt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    window.iconLibraryReady = new Promise((resolve) => {
+      if (location.hash.startsWith("#reset_token=")) return resolve();
+      const iconScript = document.createElement("script");
+      iconScript.src = "https://unpkg.com/lucide@latest";
+      iconScript.onload = resolve;
+      iconScript.onerror = resolve;
+      document.head.appendChild(iconScript);
+    });
+  </script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -182,6 +192,13 @@
         <form class="auth-form" id="authForgotForm" data-auth-panel="forgot" hidden>
           <label class="auth-field">Email tài khoản<input name="email" type="email" autocomplete="email" required placeholder="ban@email.com"></label>
           <button class="button button-dark auth-submit" type="submit">Gửi hướng dẫn đặt lại <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+          <button class="auth-back" type="button" data-auth-view="login"><i data-lucide="arrow-left" aria-hidden="true"></i> Quay lại đăng nhập</button>
+        </form>
+        <form class="auth-form" id="authResetForm" data-auth-panel="reset" hidden>
+          <input id="authResetToken" name="token" type="hidden">
+          <label class="auth-field">Mật khẩu mới<span class="auth-password"><input id="resetPassword" name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="Ít nhất 8 ký tự"><button class="password-toggle" type="button" data-password-toggle="resetPassword" aria-label="Hiện mật khẩu" title="Hiện mật khẩu"><i data-lucide="eye" aria-hidden="true"></i></button></span></label>
+          <label class="auth-field">Xác nhận mật khẩu<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Nhập lại mật khẩu mới"></label>
+          <button class="button button-dark auth-submit" type="submit">Cập nhật mật khẩu <i data-lucide="arrow-right" aria-hidden="true"></i></button>
           <button class="auth-back" type="button" data-auth-view="login"><i data-lucide="arrow-left" aria-hidden="true"></i> Quay lại đăng nhập</button>
         </form>
         <section class="auth-account" data-auth-panel="account" hidden>
