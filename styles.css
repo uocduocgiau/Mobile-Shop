@@ -108,23 +108,11 @@ h1, h2, h3 { font-family: var(--font-display); }
 .stock-filter input:checked + .custom-check { border-color: var(--ink); background: var(--ink); }
 .stock-filter input:checked + .custom-check::after { width: 7px; height: 4px; border-bottom: 1.5px solid white; border-left: 1.5px solid white; content: ""; transform: rotate(-45deg) translateY(-1px); }
 .clear-filters { padding: 7px 0; border: 0; background: none; color: #777d73; cursor: pointer; font-size: 10px; text-decoration: underline; text-underline-offset: 3px; }
-.catalog-layout { display: grid; grid-template-columns: 175px 1fr; gap: 36px; padding-top: 22px; }
-.catalog-aside { padding-top: 16px; }
-.aside-block h3 { margin: 0 0 14px; font: 600 12px var(--font-display); }
-.brand-options { display: grid; gap: 12px; }
-.brand-options { max-height: 340px; overflow-y: auto; }
-.brand-option { display: flex; align-items: center; gap: 9px; color: #62685f; cursor: pointer; font-size: 10px; }
-.brand-option input { position: absolute; opacity: 0; }
-.brand-check { width: 14px; height: 14px; display: grid; place-items: center; border: 1px solid #cbd0c5; border-radius: 2px; background: white; }
-.brand-option input:checked + .brand-check { border-color: var(--ink); background: var(--ink); }
-.brand-option input:checked + .brand-check::after { width: 6px; height: 3px; border-bottom: 1.5px solid white; border-left: 1.5px solid white; content: ""; transform: rotate(-45deg) translateY(-1px); }
-.brand-option .brand-total { margin-left: auto; color: #9a9e97; font-size: 9px; }
-.aside-promo { margin-top: 38px; padding: 16px 15px; border: 1px solid #e7e9e1; background: #edf2e4; }
-.promo-label { color: #7e8d58; font-size: 8px; font-weight: 700; letter-spacing: .1em; }
-.aside-promo p { margin: 9px 0 12px; font-size: 11px; line-height: 1.55; }
-.aside-promo strong { font: 700 12px var(--font-display); }
-.aside-promo button { display: flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; cursor: pointer; font-size: 9px; font-weight: 700; }
-.aside-promo button svg { width: 13px; height: 13px; }
+.catalog-layout { padding-top: 18px; }
+.catalog-promo-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px; margin-bottom: 16px; background: #edf2e4; color: #62685f; font-size: 10px; }
+.catalog-promo-bar strong { color: #4e6329; font: 700 11px var(--font-display); }
+.catalog-promo-bar button { display: inline-flex; align-items: center; gap: 6px; padding: 3px 0; border: 0; background: none; color: var(--ink); cursor: pointer; font-size: 9px; font-weight: 700; }
+.catalog-promo-bar button svg { width: 13px; height: 13px; }
 .results-line { min-height: 34px; display: flex; justify-content: space-between; align-items: start; color: #777d73; font-size: 10px; }
 .favorites-filter { display: inline-flex; align-items: center; gap: 5px; padding: 0; border: 0; background: none; color: #777d73; cursor: pointer; font-size: 10px; }
 .favorites-filter svg { width: 14px; height: 14px; }
@@ -353,7 +341,6 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .trust-item { justify-content: start; padding: 0 10px; }
   .trust-item small { max-width: 140px; }
   .catalog-section { margin-right: 4vw; margin-left: 4vw; }
-  .catalog-layout { grid-template-columns: 145px 1fr; gap: 23px; }
   .repair-layout { grid-template-columns: minmax(0, 1fr) minmax(350px, .95fr); gap: 20px; }
   .repair-form { padding: 18px; }
   .product-grid { gap: 28px 13px; }
@@ -405,10 +392,9 @@ dialog::backdrop { background: rgba(21,24,20,.5); backdrop-filter: blur(2px); }
   .filter-panel { min-height: 71px; gap: 16px; }
   .price-filter { width: 53%; font-size: 9px; }
   .stock-filter, .clear-filters { font-size: 9px; }
-  .catalog-layout { grid-template-columns: 1fr; gap: 14px; padding-top: 17px; }
-  .catalog-aside { padding: 0; }
-  .aside-block { display: none; }
-  .aside-promo { display: none; }
+  .catalog-layout { padding-top: 14px; }
+  .catalog-promo-bar { padding: 9px; margin-bottom: 13px; font-size: 9px; }
+  .catalog-promo-bar button { font-size: 8px; white-space: nowrap; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 11px; }
   .product-image-wrap { height: clamp(150px, 47vw, 225px); }
   .product-image-wrap img { width: 80%; height: 80%; }

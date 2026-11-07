@@ -53,7 +53,6 @@ products.push(...addedModels.map((product, index) => ({
 
 const state = {
   category: "Tất cả",
-  brands: new Set(),
   query: "",
   sort: "featured",
   maxPrice: 50000000,
@@ -218,8 +217,6 @@ function saveState() {
 function renderCategories() {
   const brands = ["Tất cả", ...new Set(products.map((product) => product.brand))];
   $("#categoryList").innerHTML = brands.map((brand) => `<button class="category-button ${state.category === brand ? "active" : ""}" data-category="${safeText(brand)}" type="button">${safeText(brand)}</button>`).join("");
-  const counts = products.reduce((result, product) => ({ ...result, [product.brand]: (result[product.brand] || 0) + 1 }), {});
-  $("#brandOptions").innerHTML = Object.entries(counts).map(([brand, count]) => `<label class="brand-option"><input type="checkbox" value="${safeText(brand)}" ${state.brands.has(brand) ? "checked" : ""}><span class="brand-check"></span>${safeText(brand)}<span class="brand-total">${count}</span></label>`).join("");
 }
 
 function renderRepairOptions() {
@@ -282,7 +279,6 @@ function filteredProducts() {
   let visible = products.filter((product) => {
     const text = `${product.name} ${product.brand} ${product.storage}`.toLocaleLowerCase("vi");
     return (state.category === "Tất cả" || product.brand === state.category)
-      && (!state.brands.size || state.brands.has(product.brand))
       && (!state.query || text.includes(state.query.toLocaleLowerCase("vi")))
       && product.price <= state.maxPrice
       && (!state.stockOnly || product.stock)
@@ -314,7 +310,7 @@ function renderProducts() {
   $("#emptyState").hidden = Boolean(visible.length);
   $("#resultsCount").textContent = `${visible.length} sản phẩm`;
   $("#showFavorites").classList.toggle("active", state.favoritesOnly);
-  const filters = Number(state.maxPrice < 50000000) + Number(state.stockOnly) + Number(state.brands.size > 0);
+  const filters = Number(state.maxPrice < 50000000) + Number(state.stockOnly);
   $("#filterCount").textContent = filters ? `(${filters})` : "";
   renderIcons();
 }
@@ -397,7 +393,6 @@ function openCheckout() {
 
 function resetFilters() {
   state.category = "Tất cả";
-  state.brands.clear();
   state.query = "";
   state.maxPrice = 50000000;
   state.stockOnly = false;
@@ -491,13 +486,6 @@ $("#authContent").addEventListener("submit", (event) => {
   submitAuthForm(event.target);
 });
 $("#sortSelect").addEventListener("change", (event) => { state.sort = event.target.value; renderProducts(); });
-$("#brandOptions").addEventListener("change", (event) => {
-  if (event.target.matches("input")) {
-    if (event.target.checked) state.brands.add(event.target.value);
-    else state.brands.delete(event.target.value);
-    renderProducts();
-  }
-});
 $("#priceRange").addEventListener("input", (event) => {
   state.maxPrice = Number(event.target.value);
   $("#priceValue").textContent = `Dưới ${Math.round(state.maxPrice / 1000000)} triệu`;

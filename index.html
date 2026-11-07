@@ -115,19 +115,9 @@
         <button class="clear-filters" id="clearFilters" type="button">Xóa bộ lọc</button>
       </div>
       <div class="catalog-layout">
-        <aside class="catalog-aside">
-          <div class="aside-block">
-            <h3>Thương hiệu</h3>
-            <div class="brand-options" id="brandOptions"></div>
-          </div>
-          <div class="aside-promo">
-            <span class="promo-label">MẸO NHỎ</span>
-            <p>Mã <strong>SHOP10</strong> giảm thêm 10% cho đơn đầu tiên.</p>
-            <button type="button" id="copyCoupon">Sao chép mã <i data-lucide="copy" aria-hidden="true"></i></button>
-          </div>
-        </aside>
         <div class="product-area">
           <div class="results-line"><span id="resultsCount">Đang tải sản phẩm...</span><button id="showFavorites" type="button" class="favorites-filter"><i data-lucide="heart" aria-hidden="true"></i> Chỉ xem yêu thích</button></div>
+          <div class="catalog-promo-bar"><span>Mã <strong>SHOP10</strong> giảm thêm 10% cho đơn đầu tiên.</span><button type="button" id="copyCoupon">Sao chép <i data-lucide="copy" aria-hidden="true"></i></button></div>
           <div class="product-grid" id="productGrid" aria-live="polite"></div>
           <div class="empty-state" id="emptyState" hidden><span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span><h3>Chưa tìm thấy sản phẩm phù hợp</h3><p>Thử đổi từ khóa hoặc xóa bớt bộ lọc nhé.</p><button class="button button-dark" id="emptyReset" type="button">Xem tất cả sản phẩm</button></div>
         </div>
