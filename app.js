@@ -241,6 +241,24 @@ function setRepairStatus(message = "", kind = "error") {
   status.classList.toggle("error", kind === "error");
 }
 
+function setMainView(view, anchor, updateHistory = true, scroll = true) {
+  const isRepairView = view === "repair";
+  document.querySelectorAll(".shop-view").forEach((section) => { section.hidden = isRepairView; });
+  $("#repairs").hidden = !isRepairView;
+  document.querySelectorAll(".main-nav [data-view-link]").forEach((link) => {
+    const active = link.dataset.viewLink === view && link.hash === anchor;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+  if (updateHistory) history.pushState(null, "", anchor);
+  if (scroll) {
+    const target = document.getElementById(anchor.slice(1));
+    if (target && !target.hidden) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
 function selectRepairType(type) {
   $("#repairType").value = type;
   document.querySelectorAll("[data-repair-type]").forEach((button) => button.classList.toggle("active", button.dataset.repairType === type));
@@ -406,6 +424,17 @@ function resetFilters() {
 }
 
 document.addEventListener("click", (event) => {
+  const viewLink = event.target.closest(".main-nav [data-view-link]");
+  if (viewLink) {
+    event.preventDefault();
+    setMainView(viewLink.dataset.viewLink, viewLink.hash);
+    return;
+  }
+  if (event.target.closest(".site-header .brand")) {
+    event.preventDefault();
+    setMainView("shop", "#top");
+    return;
+  }
   const target = event.target.closest("button, [data-detail]");
   if (!target) return;
   if (target.dataset.category) {
@@ -453,7 +482,7 @@ document.addEventListener("click", (event) => {
   } else if (target.id === "showFavorites" || target.id === "favoritesShortcut") {
     state.favoritesOnly = !state.favoritesOnly;
     state.category = "Tất cả";
-    window.location.hash = "products";
+    setMainView("shop", "#products");
     renderCategories();
     renderProducts();
   } else if (target.id === "clearFilters" || target.id === "emptyReset") resetFilters();
@@ -541,6 +570,12 @@ renderAccount();
 renderIcons();
 window.iconLibraryReady?.then(renderIcons);
 if (location.protocol !== "file:") restoreAuthSession();
+const initialAnchor = location.hash.startsWith("#reset_token=") ? "#products" : location.hash || "#products";
+setMainView(initialAnchor === "#repairs" ? "repair" : "shop", initialAnchor, false, false);
+window.addEventListener("popstate", () => {
+  const anchor = location.hash || "#products";
+  setMainView(anchor === "#repairs" ? "repair" : "shop", anchor, false, false);
+});
 const resetToken = new URLSearchParams(location.hash.slice(1)).get("reset_token");
 if (resetToken) {
   $("#authResetToken").value = resetToken;
