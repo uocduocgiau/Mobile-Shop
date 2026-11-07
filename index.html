@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Mua điện thoại chính hãng, giá tốt, giao nhanh toàn quốc tại Mobi House.">
+  <title>Mobi House - Điện thoại chính hãng, giá tốt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="announcement">
+    <span>Giao hàng miễn phí cho đơn từ 5 triệu</span>
+    <span class="announcement-separator">·</span>
+    <a href="#products">Khám phá ưu đãi tuần này <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Mobi House, về đầu trang">
+      <span class="brand-mark" aria-hidden="true">m</span>
+      <span>MOBI<span class="brand-light">HOUSE</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <a class="active" href="#products">Điện thoại</a>
+      <a href="#benefits">Dịch vụ</a>
+      <a href="#footer">Về chúng tôi</a>
+    </nav>
+    <div class="header-actions">
+      <label class="search-box">
+        <i data-lucide="search" aria-hidden="true"></i>
+        <input id="searchInput" type="search" placeholder="Tìm điện thoại..." aria-label="Tìm điện thoại">
+        <kbd>/</kbd>
+      </label>
+      <button class="icon-button favorite-shortcut" id="favoritesShortcut" type="button" aria-label="Xem sản phẩm yêu thích" title="Sản phẩm yêu thích">
+        <i data-lucide="heart" aria-hidden="true"></i>
+        <span class="header-label">Yêu thích</span>
+      </button>
+      <button class="icon-button cart-shortcut" id="openCart" type="button" aria-label="Mở giỏ hàng" title="Giỏ hàng">
+        <i data-lucide="shopping-bag" aria-hidden="true"></i>
+        <span class="header-label">Giỏ hàng</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> TUẦN LỄ CÔNG NGHỆ 2026</p>
+        <h1 id="heroTitle">Đổi điện thoại.<br><span>Đổi cả cuộc chơi.</span></h1>
+        <p class="hero-description">Chọn chiếc điện thoại hợp gu, nhận ưu đãi xứng tầm. Hàng chính hãng, bảo hành an tâm.</p>
+        <a class="button button-dark" href="#products">Khám phá ngay <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <div class="hero-proof"><span class="proof-stars" aria-label="5 trên 5 sao">★★★★★</span><span>4.9/5 từ hơn 2.000 khách hàng</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <span class="hero-sticker">MỚI<br>2026</span>
+        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1100&q=85" alt="Điện thoại thông minh thế hệ mới" fetchpriority="high">
+        <div class="hero-product-note"><span>Đáng chú ý</span><strong>iPhone 17 Pro</strong><small>Từ 28.990.000₫</small></div>
+      </div>
+      <div class="hero-index"><span>01</span> / 03</div>
+    </section>
+
+    <section class="trust-row" id="benefits" aria-label="Cam kết dịch vụ">
+      <div class="trust-item"><span class="trust-icon"><i data-lucide="badge-check" aria-hidden="true"></i></span><div><strong>Chính hãng 100%</strong><small>Đầy đủ hóa đơn, nguồn gốc</small></div></div>
+      <div class="trust-item"><span class="trust-icon"><i data-lucide="truck" aria-hidden="true"></i></span><div><strong>Giao nhanh toàn quốc</strong><small>Miễn phí từ đơn 5 triệu</small></div></div>
+      <div class="trust-item"><span class="trust-icon"><i data-lucide="refresh-ccw" aria-hidden="true"></i></span><div><strong>Đổi trả trong 30 ngày</strong><small>Đổi mới nếu có lỗi nhà sản xuất</small></div></div>
+      <div class="trust-item"><span class="trust-icon"><i data-lucide="credit-card" aria-hidden="true"></i></span><div><strong>Trả góp 0%</strong><small>Thủ tục nhanh, duyệt dễ dàng</small></div></div>
+    </section>
+
+    <section class="catalog-section" id="products">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHỌN THEO CÁCH CỦA BẠN</p><h2>Điện thoại nổi bật<span class="heading-period">.</span></h2></div>
+        <a class="text-link" href="#productGrid">Xem tất cả <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="catalog-toolbar">
+        <div class="category-list" id="categoryList" aria-label="Lọc theo thương hiệu"></div>
+        <div class="toolbar-right">
+          <label class="sort-control"><span>Sắp xếp:</span>
+            <select id="sortSelect" aria-label="Sắp xếp sản phẩm">
+              <option value="featured">Nổi bật</option>
+              <option value="price-asc">Giá tăng dần</option>
+              <option value="price-desc">Giá giảm dần</option>
+              <option value="name">Tên A-Z</option>
+            </select>
+          </label>
+          <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false"><i data-lucide="sliders-horizontal" aria-hidden="true"></i> Bộ lọc <span class="filter-count" id="filterCount"></span></button>
+        </div>
+      </div>
+      <div class="filter-panel" id="filterPanel" hidden>
+        <label class="price-filter">Khoảng giá <span id="priceValue">Dưới 50 triệu</span><input id="priceRange" type="range" min="5000000" max="50000000" step="1000000" value="50000000"></label>
+        <label class="stock-filter"><input id="stockOnly" type="checkbox"><span class="custom-check"></span> Chỉ xem hàng còn</label>
+        <button class="clear-filters" id="clearFilters" type="button">Xóa bộ lọc</button>
+      </div>
+      <div class="catalog-layout">
+        <aside class="catalog-aside">
+          <div class="aside-block">
+            <h3>Thương hiệu</h3>
+            <div class="brand-options" id="brandOptions"></div>
+          </div>
+          <div class="aside-promo">
+            <span class="promo-label">MẸO NHỎ</span>
+            <p>Mã <strong>MOBI10</strong> giảm thêm 10% cho đơn đầu tiên.</p>
+            <button type="button" id="copyCoupon">Sao chép mã <i data-lucide="copy" aria-hidden="true"></i></button>
+          </div>
+        </aside>
+        <div class="product-area">
+          <div class="results-line"><span id="resultsCount">Đang tải sản phẩm...</span><button id="showFavorites" type="button" class="favorites-filter"><i data-lucide="heart" aria-hidden="true"></i> Chỉ xem yêu thích</button></div>
+          <div class="product-grid" id="productGrid" aria-live="polite"></div>
+          <div class="empty-state" id="emptyState" hidden><span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span><h3>Chưa tìm thấy sản phẩm phù hợp</h3><p>Thử đổi từ khóa hoặc xóa bớt bộ lọc nhé.</p><button class="button button-dark" id="emptyReset" type="button">Xem tất cả sản phẩm</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletterTitle">
+      <div><p class="eyebrow">Ở LẠI MẠCH CÔNG NGHỆ</p><h2 id="newsletterTitle">Tin hay, giá tốt.<br>Gửi đến bạn trước tiên.</h2></div>
+      <form class="newsletter-form" id="newsletterForm"><label for="emailInput">Email của bạn</label><div class="newsletter-input-row"><input id="emailInput" type="email" placeholder="ban@email.com" required><button type="submit" aria-label="Đăng ký nhận tin"><i data-lucide="arrow-right" aria-hidden="true"></i></button></div><small id="newsletterMessage">Đăng ký để nhận ưu đãi mới và tin công nghệ chọn lọc.</small></form>
+      <span class="newsletter-spark" aria-hidden="true">✳</span>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">m</span><span>MOBI<span class="brand-light">HOUSE</span></span></a>
+    <p>Chọn công nghệ tốt. Sống theo cách riêng.</p>
+    <div class="footer-meta"><span>Hotline: 1800 6868</span><span>© 2026 Mobi House</span><span>Hà Nội · TP. Hồ Chí Minh</span></div>
+  </footer>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Giỏ hàng" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">MOBI HOUSE</p><h2>Giỏ hàng <span id="drawerItemCount"></span></h2></div><button class="close-button" id="closeCart" type="button" aria-label="Đóng giỏ hàng"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span><i data-lucide="shopping-bag" aria-hidden="true"></i></span><h3>Giỏ hàng đang trống</h3><p>Chọn chiếc điện thoại bạn thích nhé.</p><button class="button button-dark" id="continueShopping" type="button">Tiếp tục mua sắm</button></div>
+    <div class="cart-summary" id="cartSummary" hidden>
+      <form class="coupon-form" id="couponForm"><input id="couponInput" placeholder="Mã giảm giá" aria-label="Mã giảm giá"><button type="submit">Áp dụng</button></form><p class="coupon-message" id="couponMessage"></p>
+      <div class="summary-line"><span>Tạm tính</span><span id="subtotalValue"></span></div><div class="summary-line"><span>Phí giao hàng</span><span id="shippingValue"></span></div><div class="summary-line discount-line" id="discountRow" hidden><span>Ưu đãi</span><span id="discountValue"></span></div><div class="summary-line total-line"><strong>Tổng cộng</strong><strong id="totalValue"></strong></div>
+      <button class="button button-dark checkout-button" id="checkoutButton" type="button">Tiến hành đặt hàng <i data-lucide="arrow-right" aria-hidden="true"></i></button><p class="secure-note"><i data-lucide="lock-keyhole" aria-hidden="true"></i> Thông tin của bạn được bảo mật</p>
+    </div>
+  </aside>
+
+  <dialog class="product-dialog" id="productDialog" aria-label="Chi tiết sản phẩm"><button class="close-button dialog-close" id="closeProduct" type="button" aria-label="Đóng chi tiết"><i data-lucide="x" aria-hidden="true"></i></button><div id="productDetail"></div></dialog>
+  <dialog class="checkout-dialog" id="checkoutDialog" aria-labelledby="checkoutTitle"><button class="close-button dialog-close" id="closeCheckout" type="button" aria-label="Đóng đặt hàng"><i data-lucide="x" aria-hidden="true"></i></button><div id="checkoutContent"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
